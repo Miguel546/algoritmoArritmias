@@ -1,0 +1,7 @@
+217m 1 360 650000
+217m.mat 16+192 200/mV 11 0 9 27394 0 MLII
+# 65 M 2450 653 x1
+# Digoxin, Lasix, Quinidine
+# The PVCs are multiform.
+#Creator: wfdb2mat
+#Source: record mitdb/217

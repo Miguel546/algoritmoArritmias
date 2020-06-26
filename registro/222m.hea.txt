@@ -1,0 +1,9 @@
+222m 1 360 650000
+222m.mat 16+192 200/mV 11 0 -28 32159 0 MLII
+# 84 F 1633 1629 x1
+# Digoxin, Quinidine
+# The episodes of paroxysmal atrial flutter/fibrillation are usually
+# followed by nodal escape beats.  There are several intervals of
+# high-frequency noise/artifact in both channels.
+#Creator: wfdb2mat
+#Source: record mitdb/222

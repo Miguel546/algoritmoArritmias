@@ -1,0 +1,6 @@
+103m 1 360 650000
+103m.mat 16+192 200/mV 11 0 -75 -4927 0 MLII
+# -1 M 742 654 x1
+# Diapres, Xyloprim
+#Creator: wfdb2mat
+#Source: record mitdb/103

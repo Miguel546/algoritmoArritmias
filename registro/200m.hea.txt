@@ -1,0 +1,9 @@
+200m 1 360 650000
+200m.mat 16+192 200/mV 11 0 70 -3546 0 MLII
+# 64 M 1953 3655 x1
+# Digoxin, Quinidine
+# The PVCs are multiform.  There are occasional bursts of high-frequency
+# noise in the upper channel, and severe noise and artifact in the lower
+# channel.
+#Creator: wfdb2mat
+#Source: record mitdb/200

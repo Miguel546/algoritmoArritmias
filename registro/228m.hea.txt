@@ -1,0 +1,9 @@
+228m 1 360 3600
+228m.mat 16+192 200/mV 11 0 -31 11319 0 MLII
+# 80 F 2775 1629 x1
+# Digoxin, Norpace
+# There is first degree AV block.  The PVCs are multiform.  There are
+# three short occurrences of tape slippage with a maximum duration of 2.2
+# seconds.
+#Creator: wfdb2mat
+#Source: record mitdb/228

@@ -1,0 +1,8 @@
+111m 1 360 650000
+111m.mat 16+192 200/mV 11 0 -7 4454 0 MLII
+# 47 F 937 167 x1
+# Digoxin, Lasix
+# There is first degree AV block.  There are short bursts of both baseline
+# shifts and muscle noise, but in general, the quality is excellent.
+#Creator: wfdb2mat
+#Source: record mitdb/111

@@ -1,0 +1,9 @@
+208m 1 360 650000
+208m.mat 16+192 200/mV 11 0 -21 -8310 0 MLII
+# 23 F 2546 N/A x1
+# None
+# The PVCs are uniform.  The couplets, many of which include a fusion PVC, are
+# often seen in a bigeminal pattern.   The triplets each consist of two
+# PVCs and a fusion PVC.
+#Creator: wfdb2mat
+#Source: record mitdb/208

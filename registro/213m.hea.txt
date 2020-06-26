@@ -1,0 +1,9 @@
+213m 1 360 650000
+213m.mat 16+192 200/mV 11 0 -2 -8718 0 MLII
+# 61 M 2817 1629 x1
+# Digoxin
+# The PVCs are multiform and usually late-cycle, frequently resulting in
+# fusion PVCs.  The morphology of the fusion PVCs varies from almost normal
+# to almost identical to that of the PVCs.
+#Creator: wfdb2mat
+#Source: record mitdb/213

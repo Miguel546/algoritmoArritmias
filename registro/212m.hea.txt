@@ -1,0 +1,8 @@
+212m 1 360 650000
+212m.mat 16+192 200/mV 11 0 -100 14550 0 MLII
+# 32 F 2879 171 x1
+# None
+# There is rate-related right bundle branch block which appears when the heart
+# rate exceeds approximately 90 bpm.
+#Creator: wfdb2mat
+#Source: record mitdb/212

@@ -1,0 +1,6 @@
+230m 1 360 3600
+230m.mat 16+192 200/mV 11 0 -76 -11477 0 MLII
+# 32 M 2992 3655 x2
+# Dilantin
+#Creator: wfdb2mat
+#Source: record mitdb/230

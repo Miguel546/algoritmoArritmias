@@ -1,0 +1,8 @@
+202m 1 360 650000
+202m.mat 16+192 200/mV 11 0 0 19802 0 MLII
+# 68 M 1960 2851 x1
+# Digoxin, Hydrochlorthiazide, Inderal, KCl
+# The PVCs are uniform and late-cycle.  This record was taken from the same
+# analog tape as record 201.
+#Creator: wfdb2mat
+#Source: record mitdb/202

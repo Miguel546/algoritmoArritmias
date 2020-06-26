@@ -1,0 +1,9 @@
+108m 1 360 650000
+108m.mat 16+192 200/mV 11 0 -25 25072 0 MLII
+# 87 F 1227 654 x1
+# Digoxin, Quinaglute
+# There is borderline first degree AV block and sinus arrhythmia.  The
+# PVCs are multiform.  The lower channel exhibits considerable noise and
+# baseline shifts.
+#Creator: wfdb2mat
+#Source: record mitdb/108

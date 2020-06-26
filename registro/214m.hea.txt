@@ -1,0 +1,8 @@
+214m 1 360 650000
+214m.mat 16+192 200/mV 11 0 -19 22358 0 MLII
+# 53 M 3189 1629 x1
+# Digoxin, Dilantin
+# The PVCs are multiform.  There are two episodes of artifactual amplitude
+# decrease and one occurrence of tape slippage.
+#Creator: wfdb2mat
+#Source: record mitdb/214

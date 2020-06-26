@@ -1,0 +1,8 @@
+105m 1 360 650000
+105m.mat 16+192 200/mV 11 0 -89 24473 0 MLII
+# 73 F 1624 1629 x1
+# Digoxin, Nitropaste, Pronestyl
+# The PVCs are uniform.  The predominant feature of this tape is
+# high-grade noise and artifact.
+#Creator: wfdb2mat
+#Source: record mitdb/105

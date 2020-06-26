@@ -1,0 +1,7 @@
+205m 1 360 650000
+205m.mat 16+192 200/mV 11 0 -86 -28638 0 MLII
+# 59 M 1957 694 x2
+# Digoxin, Quinaglute
+# The PVCs are of two forms, one of which is much more common than the other.
+#Creator: wfdb2mat
+#Source: record mitdb/205

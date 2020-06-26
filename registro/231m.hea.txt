@@ -1,0 +1,9 @@
+231m 1 360 3600
+231m.mat 16+192 200/mV 11 0 -40 -1325 0 MLII
+# 72 F 2009 2851 x2
+# None
+# AV conduction is quite abnormal with periods of 2:1 AV block, examples
+# of Mobitz II block, and right bundle branch block which appears to be
+# rate-related.  The couplet is probably ventricular.
+#Creator: wfdb2mat
+#Source: record mitdb/231

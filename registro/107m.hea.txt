@@ -1,0 +1,7 @@
+107m 1 360 650000
+107m.mat 16+192 200/mV 11 0 -409 -31650 0 MLII
+# 63 M 1340 167 x1
+# Digoxin
+# Complete heart block is present. The PVCs are multiform.
+#Creator: wfdb2mat
+#Source: record mitdb/107

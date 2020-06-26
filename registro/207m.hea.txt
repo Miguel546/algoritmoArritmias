@@ -1,0 +1,12 @@
+207m 1 360 650000
+207m.mat 16+192 200/mV 11 0 -43 -4790 0 MLII
+# 89 F 859 694 x1
+# Digoxin, Quinaglute
+# This is an extremely difficult record.  The predominant rhythm is normal
+# sinus with first degree AV block and left bundle branch block.  There are
+# periods when the conduction block changes to a right bundle branch block
+# pattern.  The PVCs are multiform.  Idioventricular rhythm appears following
+# the longest episode of ventricular flutter.  The record ends during the
+# episode of SVTA.
+#Creator: wfdb2mat
+#Source: record mitdb/207

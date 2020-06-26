@@ -1,0 +1,9 @@
+104m 1 360 650000
+104m.mat 16+192 200/mV 11 0 -30 -30755 0 V5
+# 66 F 1567 694 x1
+# Digoxin, Pronestyl
+# The rate of paced rhythm is close to that of the underlying sinus rhythm,
+# resulting in many pacemaker fusion beats.  The PVCs are multiform.  Several
+# bursts of muscle noise occur, but the signals are generally of good quality.
+#Creator: wfdb2mat
+#Source: record mitdb/104

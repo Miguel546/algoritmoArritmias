@@ -1,0 +1,8 @@
+201m 1 360 650000
+201m.mat 16+192 200/mV 11 0 -52 -16903 0 MLII
+# 68 M 1960 2851 x1
+# Digoxin, Hydrochlorthiazide, Inderal, KCl
+# The PVCs are uniform and late-cycle.  Junctional escape beats occur following
+# episodes of ventricular trigeminy.
+#Creator: wfdb2mat
+#Source: record mitdb/201

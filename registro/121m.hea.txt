@@ -1,0 +1,6 @@
+121m 1 360 650000
+121m.mat 16+192 200/mV 11 0 -175 -10287 0 MLII
+# 83 F 1245 167 x2
+# Digoxin, Isordil, Nitropaste
+#Creator: wfdb2mat
+#Source: record mitdb/121
