@@ -226,7 +226,7 @@ fs = 360;
 [ecgs2, Rindex2, Tindex, Pindex, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
 
 figura1 = figure;
-title(strcat('Ondas P ', {' '}, registromit));
+title(strcat('QRS on Señal Filtrada', {' '}, registromit));
 hold on, plot(ecgs2,'b');
 hold on, plot(block,'k.-');
 hold on, plot(Rindex,ecgs2(Rindex),'go');

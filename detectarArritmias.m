@@ -1,4 +1,4 @@
-function [ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia] = detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex, Pindex, S_index, Q_index, Tindex, K_index);
+function [ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia, Resultados] = detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex, Pindex, S_index, Q_index, Tindex, K_index);
 
 Findex=[];
 porcbradi=0;
@@ -18,7 +18,7 @@ porcoarr = 0;
 
 
 Intervalos=[0 0];
-
+Resultados= [];
 NSyR=[];
 SyBr=[];
 SyTa=[];
@@ -55,10 +55,11 @@ for i = 1 : length(Rindex)
         RR_nuevo=Rindex(2)-Rindex(1);
         %Desde el octavo hacia atras hacia el ultimo
         diffRR2 = diff(Rindex(1:2));
+        ritmo = diffRR2;
         %Se repite tres veces
         %Todos los RR lo va a mostrar tres veces
         %Para que eso no pase el RR temporal del RR nuevo
-        if(abs(max(diffRR2)-min(diffRR2))<=round(0.080*fs))
+        if(ritmo<=round(0.080*fs))
             ritmoregular=[ritmoregular; (Rindex(i)) Rindex(i) (Rindex(i)/fs) (Rindex(i)/fs)  (RR_nuevo/fs) tmin tseg tminfinal tsegfinal];
             RitmoR=1;
         else
@@ -123,7 +124,7 @@ for i = 1 : length(Rindex)
         %El ancho del QRS en muestras
        QRS=S_index(i)-Q_index(i);
        %El ancho del QRS en ms
-        QRSms=(QRS/360)*1000;
+       QRSms=(QRS/360)*1000;
         
         if(QRSms<120)
             normalqrs=1;
@@ -141,21 +142,22 @@ for i = 1 : length(Rindex)
         restoanterior = (Rindex(i)/fs)-floor(Rindex(i)/fs);
         segundoactual = floor(Rindex(i)/fs); 
         restoactual = ((Rindex(i)/fs)-floor(Rindex(i)/fs));
-        tiemporr = (RR_nuevo/fs); 
+        tiemporr = (RR_nuevo/fs);
+        Resultados = [Resultados; ractual PRms QRSms 60/(mean(diffRR2)/fs) hayondaP ritmo/360]
         if((RitmoR || (~RitmoR)) && latnormal && PRint && hayondaP && normalqrs)
-            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(bradi && PRint)
-            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR &&  normalqrs)
-            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))]
+            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360]
         elseif(RitmoR && normalqrs)
-            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(RitmoR && taqui && ~normalqrs)
-            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR && HRalto && ~normalqrs && ~hayondaP)
-            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         else
-            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         end
    elseif(i >1 && i < 7)
        tseg=mod(Rindex(i-1)/fs,60);
@@ -166,10 +168,16 @@ for i = 1 : length(Rindex)
         desviacion(i)= std([Rindex(i-1) Rindex(i)]);
         %Desde el octavo hacia atras hacia el ultimo
         diffRR2 = diff(Rindex(1:i));
+        if(i == 2)
+            ritmo = diffRR2;
+        else
+            ritmo = max(diffRR2) - min(diffRR2);
+        end
+        
         %Se repite tres veces
         %Todos los RR lo va a mostrar tres veces
         %Para que eso no pase el RR temporal del RR nuevo
-        if(abs(max(diffRR2)-min(diffRR2))<=round(0.080*fs))
+        if(ritmo<=round(0.080*fs))
             ritmoregular=[ritmoregular; (Rindex(i-1)) Rindex(i) (Rindex(i-1)/fs) (Rindex(i)/fs)  (RR_nuevo/fs) tmin tseg tminfinal tsegfinal];
             RitmoR=1;
         else
@@ -257,21 +265,21 @@ for i = 1 : length(Rindex)
         segundoactual = floor(Rindex(i)/fs); 
         restoactual = ((Rindex(i)/fs)-floor(Rindex(i)/fs));
         tiemporr = (RR_nuevo/fs); 
-        
+        Resultados = [Resultados; ractual PRms QRSms 60/(mean(diffRR2)/fs) hayondaP ritmo/360]
         if((RitmoR || (~RitmoR)) && latnormal && PRint && hayondaP && normalqrs)
-            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
-        elseif(bradi && PRint )
-            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
+        elseif(bradi && PRint)
+            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR &&  normalqrs)
-            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))]
+            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360]
         elseif(RitmoR && normalqrs)
-            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(RitmoR && taqui && ~normalqrs)
-            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR && HRalto && ~normalqrs && ~hayondaP)
-            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         else
-            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         end
        
    elseif(i>7)
@@ -286,7 +294,8 @@ for i = 1 : length(Rindex)
         %Se repite tres veces
         %Todos los RR lo va a mostrar tres veces
         %Para que eso no pase el RR temporal del RR nuevo
-        if(abs(max(diffRR2)-min(diffRR2))<=round(0.080*fs))
+        ritmo = max(diffRR2) - min(diffRR2);
+        if(ritmo<=round(0.080*fs))
             ritmoregular=[ritmoregular; (Rindex(i-1)) Rindex(i) (Rindex(i-1)/fs) (Rindex(i)/fs)  (RR_nuevo/fs) tmin tseg tminfinal tsegfinal];
             RitmoR=1;
         else
@@ -370,21 +379,22 @@ for i = 1 : length(Rindex)
         segundoactual = floor(Rindex(i)/fs); 
         restoactual = ((Rindex(i)/fs)-floor(Rindex(i)/fs));
         tiemporr = (RR_nuevo/fs); 
-  
+        Resultados = [Resultados; ractual PRms QRSms 60/(mean(diffRR2)/fs) hayondaP ritmo/360]
         if((RitmoR || (~RitmoR)) && latnormal && PRint && hayondaP && normalqrs)
-            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+        %if(RitmoR && latnormal && PRint && hayondaP && normalqrs)
+            NSyR=[NSyR; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(bradi && PRint)
-            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            SyBr=[SyBr; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR &&  normalqrs)
-            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))]
+            AtFib=[AtFib; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360]
         elseif(RitmoR && normalqrs)
-            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            AtFl =[AtFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(RitmoR && taqui && ~normalqrs)
-            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VTa=[VTa; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         elseif(~RitmoR && HRalto && ~normalqrs && ~hayondaP)
-            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            VFl=[VFl; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         else
-            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) abs(max(diffRR2)-min(diffRR2))];
+            OtraArritmia=[OtraArritmia; ranterior ractual segundoanterior restoanterior segundoactual restoactual tiemporr tmin tseg tminfinal tsegfinal PRms QRSms 60/(mean(diffRR2)/fs) ritmo/360];
         end
     end
 end
@@ -403,3 +413,4 @@ assignin('base','VTa',VTa);
 assignin('base','VFib',VFl);
 assignin('base','B1Gr',B1Gr);
 assignin('base','OtraArritmia',OtraArritmia);
+assignin('base', 'Resultados', Resultados);

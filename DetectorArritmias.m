@@ -253,7 +253,7 @@ global AtFib;
 global VTa; 
 global VFl; 
 global B1Gr; 
-global OtraArritmia;
+global OtraArritmia; global Resultados;
 
 global VParregloNSyR;
 global VParregloSyBr;
@@ -285,7 +285,7 @@ set(handles.tablaAnotaciones, 'data', table2cell(anotacionArritmia));
 fs = 360;
 [ecgnormal, ecg, Rindex, Q_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
 [ecgs2, Rindex2, Tindex, Pindex, anotacionesP] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
-[ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia]= detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, S_index, Q_index, Tindex, K_index);
+[ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, S_index, Q_index, Tindex, K_index);
 %[ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia]= detectarArritmiasLiteratura(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, S_index, Q_index, Tindex, K_index);
 assignin('base', 'ecgs', ecgs2);
 %%
@@ -775,7 +775,7 @@ global AtFib;
 global VTa; 
 global VFl; 
 global B1Gr; 
-global OtraArritmia;
+global OtraArritmia; global Resultados;
 
 global VParregloNSyR;
 global VParregloSyBr;

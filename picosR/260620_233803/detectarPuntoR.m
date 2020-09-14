@@ -1,6 +1,6 @@
 function [ecg, ecgs, Rindex, Q_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, numero, fs, gr)
 load(strcat('registro/',registromit));
-load('queriesAnotaciones');
+load('queriesAnotaciones') ;
 anotacionRegistro = queries(numero - 1);
 
 ecg = val;

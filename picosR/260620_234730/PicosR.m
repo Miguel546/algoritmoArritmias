@@ -1,35 +1,35 @@
-function varargout = OndasPT(varargin)
-% ONDASPT MATLAB code for OndasPT.fig
-%      ONDASPT, by itself, creates a new ONDASPT or raises the existing
+function varargout = PicosR(varargin)
+% PICOSR MATLAB code for PicosR.fig
+%      PICOSR, by itself, creates a new PICOSR or raises the existing
 %      singleton*.
 %
-%      H = ONDASPT returns the handle to a new ONDASPT or the handle to
+%      H = PICOSR returns the handle to a new PICOSR or the handle to
 %      the existing singleton*.
 %
-%      ONDASPT('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in ONDASPT.M with the given input arguments.
+%      PICOSR('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in PICOSR.M with the given input arguments.
 %
-%      ONDASPT('Property','Value',...) creates a new ONDASPT or raises the
+%      PICOSR('Property','Value',...) creates a new PICOSR or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before OndasPT_OpeningFcn gets called.  An
+%      applied to the GUI before PicosR_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to OndasPT_OpeningFcn via varargin.
+%      stop.  All inputs are passed to PicosR_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help OndasPT
+% Edit the above text to modify the response to help PicosR
 
-% Last Modified by GUIDE v2.5 04-Aug-2019 22:55:16
+% Last Modified by GUIDE v2.5 04-Aug-2019 18:52:37
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @OndasPT_OpeningFcn, ...
-                   'gui_OutputFcn',  @OndasPT_OutputFcn, ...
+                   'gui_OpeningFcn', @PicosR_OpeningFcn, ...
+                   'gui_OutputFcn',  @PicosR_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,27 +44,31 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before OndasPT is made visible.
-function OndasPT_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before PicosR is made visible.
+function PicosR_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to OndasPT (see VARARGIN)
+% varargin   command line arguments to PicosR (see VARARGIN)
+
+% Choose default command line output for PicosR
+
 global count;
+global contar;
+contar = 0;
 count = 0;
-% Choose default command line output for OndasPT
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes OndasPT wait for user response (see UIRESUME)
+% UIWAIT makes PicosR wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = OndasPT_OutputFcn(hObject, eventdata, handles) 
+function varargout = PicosR_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -74,19 +78,19 @@ function varargout = OndasPT_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on selection change in menuOndaPT.
-function menuOndaPT_Callback(hObject, eventdata, handles)
-% hObject    handle to menuOndaPT (see GCBO)
+% --- Executes on selection change in menuPicoR.
+function menuPicoR_Callback(hObject, eventdata, handles)
+% hObject    handle to menuPicoR (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns menuOndaPT contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from menuOndaPT
+% Hints: contents = cellstr(get(hObject,'String')) returns menuPicoR contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from menuPicoR
 
 
 % --- Executes during object creation, after setting all properties.
-function menuOndaPT_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to menuOndaPT (see GCBO)
+function menuPicoR_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to menuPicoR (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -98,18 +102,18 @@ end
 
 
 
-function edit_x_PT_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_x_PT (see GCBO)
+function edit_x_R_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_x_R (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit_x_PT as text
-%        str2double(get(hObject,'String')) returns contents of edit_x_PT as a double
+% Hints: get(hObject,'String') returns contents of edit_x_R as text
+%        str2double(get(hObject,'String')) returns contents of edit_x_R as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit_x_PT_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_x_PT (see GCBO)
+function edit_x_R_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_x_R (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -121,18 +125,18 @@ end
 
 
 
-function edit_y_PT_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_y_PT (see GCBO)
+function edit_y_R_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_y_R (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit_y_PT as text
-%        str2double(get(hObject,'String')) returns contents of edit_y_PT as a double
+% Hints: get(hObject,'String') returns contents of edit_y_R as text
+%        str2double(get(hObject,'String')) returns contents of edit_y_R as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit_y_PT_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_y_PT (see GCBO)
+function edit_y_R_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_y_R (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -143,18 +147,15 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in irAMuestraPT.
-function irAMuestraPT_Callback(hObject, eventdata, handles)
-% hObject    handle to irAMuestraPT (see GCBO)
+% --- Executes on button press in irAMuestraR.
+function irAMuestraR_Callback(hObject, eventdata, handles)
+% hObject    handle to irAMuestraR (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global count;
 global textoactual;
 global textoant;
 global ecg;
-global VParregloP; 
-global FParregloP; 
-global FNarregloP;
 
 count = count + 1;
 
@@ -178,8 +179,8 @@ else
        disp(s);
        disp(count);
    delete(textoant);
-       delete(textoactual);
-       x = get(handles.edit_x_R,'String');
+   delete(textoactual);
+   x = get(handles.edit_x_R,'String');
    %disp(x);
    posx = str2double(x);
    xlim([posx-1000 posx+1000]);
@@ -192,21 +193,29 @@ else
    textoactual = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
 end
 
-% --- Executes on button press in AnalizarPT.
-function AnalizarPT_Callback(hObject, eventdata, handles)
-% hObject    handle to AnalizarPT (see GCBO)
+% --- Executes on button press in btnAnalizar.
+function btnAnalizar_Callback(hObject, eventdata, handles)
+% hObject    handle to btnAnalizar (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global ecg;
-global VParregloP;
-global FParregloP; 
-global FNarregloP;
-global figura1;
 
+global ecg;
+global click;
+global VParregloR; 
+global FParregloR; 
+global FNarregloR;
+global contar;
+global figura1;
+global figura2;
 if ishandle(figura1)
 close(figura1)
 end
 
+if ishandle(figura2)
+close(figura2)
+end
+click = true;
+contar = contar + 1;
 dbname = 'mitarrythmiadatabase';
 username = 'root';
 password = 'root';
@@ -215,93 +224,138 @@ dburl = ['jdbc:mysql://localhost:3306/' dbname];
 javaclasspath('mysql-connector-java-5.1.47.jar');
 [conexionBD] = conexion(dbname, username, password, driver, dburl); 
 
-cla(handles.ecgPlotPT);
-ecgPlotPT = handles.ecgPlotPT;
-items = get(handles.menuOndaPT,'String');
-seleccionarRegistro=get(handles.menuOndaPT, 'value');
+cla(handles.ecgPlotR);
+ecgPlotR = handles.ecgPlotR;
+items = get(handles.menuPicoR,'String');
+seleccionarRegistro=get(handles.menuPicoR, 'value');
 registromit = items{seleccionarRegistro};
 
 fs = 360;
-[ecgnormal, ecg, Rindex, Q_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
-[ecgs2, Rindex2, Tindex, Pindex, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
+[ecgnormal, ecg, Rindex, Q_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
+gr = 1;
 
-figura1 = figure;
-title(strcat('Ondas P ', {' '}, registromit));
-hold on, plot(ecgs2,'b');
-hold on, plot(block,'k.-');
-hold on, plot(Rindex,ecgs2(Rindex),'go');
-hold on, plot(Tindex,ecgs2(Tindex),'k+');
-hold on, plot(Pindex,ecgs2(Pindex),'r*');
+figura1 = figure,
+if gr
+title('Hola');
+ax(1)=subplot(3,2,[1 2]);plot(ecg);axis tight;title(strcat('Senal ECG ', {' '}, registromit));
+end
+if gr
+ax(3)=subplot(323);plot(ecg_hplot);axis tight;title('Filtro pasa banda');
+end
+if gr
+ax(4)=subplot(324);plot(ecg_dplot);axis tight;title('Derivación después del filtrado');
+end
+if gr
+ax(5)=subplot(325);plot(ecg_splot);axis tight;title('Elevar al cuadrado');
+end
+if gr
+ax(6)=subplot(326);plot(ecg_mplot);axis tight;title('Promedio con 30 muestras,Ruido negro,Umbral verde adaptativo,Rojo Nivel de la señal,Círculos Rojos QRS detectados');
+axis tight;
+end
+if gr
+hold on,scatter(qrs_i,qrs_c,'m');
+%rojo
+hold on,plot(locs,NOISL_buf,'--k','LineWidth',2);
+%negro
+hold on,plot(locs,SIGL_buf,'--r','LineWidth',2);
+%verde
+hold on,plot(locs,THRS_buf,'--g','LineWidth',2);
+linkaxes(ax,'x');
+zoom on;
+end
 
-[VPP,FPP,FNP, SensiP, PredpP, VParregloP, FParregloP, FNarregloP] = sensiPred(Pindex, anotacionesP);
-assignin('base','VParregloP',VParregloP);
-assignin('base','FParregloP',FParregloP);
-assignin('base','FNarregloP',FNarregloP);
+if gr
+   figura2 = figure;
+   az(1)=subplot(311);
+   plot(ecg_hplot);
+   title(strcat('QRS on Señal Filtrada', {' '}, registromit));
+   axis tight;
+   hold on,scatter(qrs_i_raw,qrs_amp_raw,'m');
+   hold on,plot(locs,NOISL_buf1,'LineWidth',2,'Linestyle','--','color','k');
+   hold on,plot(locs,SIGL_buf1,'LineWidth',2,'Linestyle','-.','color','r');
+   hold on,plot(locs,THRS_buf1,'LineWidth',2,'Linestyle','-.','color','g');
+   az(2)=subplot(312);plot(ecg_mplot);
+   title('QRS en ventana móvil de integración y nivel de ruido(negro), nivel de señal (rojo) and filtro adaptativo(verde)');axis tight;
+   hold on,scatter(qrs_i,qrs_c,'m');
+   hold on,plot(locs,NOISL_buf,'LineWidth',2,'Linestyle','--','color','k');
+   hold on,plot(locs,SIGL_buf,'LineWidth',2,'Linestyle','-.','color','r');
+   hold on,plot(locs,THRS_buf,'LineWidth',2,'Linestyle','-.','color','g');
+   az(3)=subplot(313);
+   plot(ecg-mean(ecg));
+   title('Tren de pulsos del QRS encontrado en la señal de ECG');
+   axis tight;
+   line(repmat(qrs_i_raw,[2 1]),...
+       repmat([min(ecg-mean(ecg))/2; max(ecg-mean(ecg))/2],size(qrs_i_raw)),...
+       'LineWidth',2.5,'LineStyle','-.','Color','r');
+   linkaxes(az,'x');
+   zoom on;
+ end
+assignin('base','figura1',figura1);
+assignin('base','figura2',figura2);
+[VPR,FPR,FNR, SensiR, PredpR, VParregloR, FParregloR, FNarregloR] = sensiPred(Rindex, anotacion);
+assignin('base','VParregloR',VParregloR);
+assignin('base','FParregloR',FParregloR);
+assignin('base','FNarregloR',FNarregloR);
 
-axes(ecgPlotPT);
+axes(ecgPlotR);
+plot(ecg);title(strcat('Registro', 32,  registromit));
+hold on,plot(Rindex,ecg(Rindex),'go');
+hold on,plot(anotacion.('Sample'),ecg(anotacion.('Sample')),'m^');
 
-hold on,plot(ecg); title(strcat('Registro', 32,  registromit));
-%hold on,plot(S_index,ecg(S_index),'r+');  %Grafica picos R sobre la curva ECG acondicionada
-%hold on,plot(Rindex2,ecg(Rindex2),'go');
-%hold on, plot(Q_index, ecg(Q_index),'r*');
-%hold on,plot(K_index,ecg(K_index),'b+');  %K_amp_ECG
-hold on,plot(Pindex,ecg(Pindex),'ko');
-%hold on,plot(Tindex,ecg(Tindex),'mo');
-hold on,plot(anotacionesP.('Sample'),ecg(anotacionesP.('Sample')),'rx');
-%legend('ECG','Punto S','Punto R','Punto Q','Punto K','Onda P', 'Onda T', 'Anotaciones T')
-legend('ECG','Onda P', 'Anotaciones P')
-handles.ecgPlotPT.XRuler.Exponent = 0;
+legend('ecg','Rindex', 'anotaciones');
+handles.ecgPlotR.XRuler.Exponent = 0;
 
-ecgPlot =datacursormode(handles.figure1);
+ecgPlot = datacursormode(handles.figure1);
 
-set(ecgPlot ,'UpdateFcn', {@myupdatefcn, handles.edit_x_PT, handles.edit_y_PT, 0});
+set(ecgPlot ,'UpdateFcn', {@myupdatefcn, handles.edit_x_R, handles.edit_y_R, 0});
 
-set(handles.textSensibilidadPT, 'String', ['Sensibilidad: ' num2str(SensiP)]);
-set(handles.textPredictividadPT, 'String', ['Predictividad: ' num2str(PredpP)]);
-set(handles.textVPPT, 'String', ['VP: ' num2str(VPP)]);
-set(handles.textFPPT, 'String', ['FP: ' num2str(FPP)]);
-set(handles.textFNPT, 'String', ['FN: ' num2str(FNP)]);
+set(handles.textSensibilidadR, 'String', ['Sensibilidad: ' num2str(SensiR)]);
+set(handles.textPredictividadR, 'String', ['Predictividad: ' num2str(PredpR)]);
+set(handles.textVPR, 'String', ['VP: ' num2str(VPR)]);
+set(handles.textFPR, 'String', ['FP: ' num2str(FPR)]);
+set(handles.textFNR, 'String', ['FN: ' num2str(FNR)]);
 
 dia= datestr(now,'ddmmyy');
 hora = datestr(now,'HH:MM:SS');
 nuevahora = erase(hora, ':');
 fechahora = strcat(dia, '_', nuevahora);
 
-mkdir(strcat('ondasPT/',fechahora));
+mkdir(strcat('picosR/',fechahora));
 
-copyfile('OndasPT.fig', strcat('ondasPT/',fechahora, '/', 'OndasPT.fig'));
-copyfile('OndasPT.m', strcat('ondasPT/',fechahora, '/', 'OndasPT.m'));
-copyfile('detectarOndasPT.m',strcat('ondasPT/',fechahora, '/', 'detectarOndasPT.m'));
-copyfile('queriesAnotacionesP.mat', strcat('ondasPT/',fechahora, '/', 'queriesAnotacionesP.mat'));
+copyfile('PicosR.fig', strcat('picosR/',fechahora, '/', 'PicosR.fig'));
+copyfile('PicosR.m', strcat('picosR/',fechahora, '/', 'PicosR.m'));
+copyfile('detectarPuntoR.m',strcat('picosR/',fechahora, '/', 'detectarPuntoR.m'));
 
-querie = evalin('base', 'anotacionRegistroP');
+copyfile('queriesAnotaciones.mat', strcat('picosR/',fechahora, '/', 'queriesAnotaciones.mat'));
+
+querie = evalin('base', 'anotacionRegistro');
 nombresCol = {'registro','latidos','sensibilidad','predictividad','vp','fn','fp','errorsensibilidad','errorpredictividad','deteccionfallidalatidos','deteccionfallidaporc','tiempo', 'querie'};
-dataInsertar = {registromit, height(anotacionesP), SensiP, PredpP, VPP, FNP, FPP, 100-SensiP, 100-PredpP, FPP+FNP, (((FPP+FNP)/height(anotacionesP))*100), fechahora, querie};
-datainsert(conexionBD, 'ondasp', nombresCol, dataInsertar);
+dataInsertar = {registromit, height(anotacion), SensiR, PredpR, VPR, FNR, FPR, 100-SensiR, 100-PredpR, FPR+FNR, (((FPR+FNR)/height(anotacion))*100), fechahora, querie};
+datainsert(conexionBD, 'picosr', nombresCol, dataInsertar);
 
-set(handles.tablaVPP,'data',[])
-set(handles.tablaVPP,'ColumnName', ["Algoritmo" "Anotaciones"]);
-set(handles.tablaVPP, 'data', VParregloP);
+set(handles.tablaVPR,'data',[])
+set(handles.tablaVPR,'ColumnName', ["Algoritmo" "Anotaciones"]);
+set(handles.tablaVPR, 'data', VParregloR);
 
-set(handles.tablaFPP,'data',[]);
-set(handles.tablaFPP, 'ColumnName', ["Muestra" "Minutos" "Segundos" "Milisegundos"]);
-set(handles.tablaFPP, 'data', FParregloP);
+set(handles.tablaFPR,'data',[])
+set(handles.tablaFPR, 'ColumnName', ["Muestra" "Minutos" "Segundos" "Milisegundos"]);
+set(handles.tablaFPR, 'data', FParregloR);
 
-set(handles.tablaFNP,'data',[]);
-set(handles.tablaFNP, 'ColumnName', ["Muestra" "Minutos" "Segundos" "Milisegundos"]);
-if(isempty(FNarregloP))
+set(handles.tablaFNR,'data',[])
+set(handles.tablaFNR, 'ColumnName', ["Muestra" "Minutos" "Segundos" "Milisegundos"]);
+if(isempty(FNarregloR))
 else
-    for i = 1 : size(FNarregloP,1)
+    for i = 1 : size(FNarregloR,1)
         for y = 1 : 5
             if(y == 5)
             else
-                FNarregloPP(i,y) = FNarregloP(i,y);
+                FNarregloRR(i,y) = FNarregloR(i,y);
             end        
          end
     end
-    set(handles.tablaFNP, 'data', FNarregloPP);
-end
+    set(handles.tablaFNR, 'data', FNarregloRR);
 
+end
 
 function txt = myupdatefcn(obj,event_obj, h1, h2, opcion)
 % Customizes text of data tips
@@ -323,21 +377,22 @@ set(h2, 'String', pos(2));
 txt = {};
 
 
-% --- Executes when selected cell(s) is changed in tablaVPP.
-function tablaVPP_CellSelectionCallback(hObject, eventdata, handles)
-% hObject    handle to tablaVPP (see GCBO)
+% --- Executes when selected cell(s) is changed in tablaVPR.
+function tablaVPR_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to tablaVPR (see GCBO)
 % eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
 %	Indices: row and column indices of the cell(s) currently selecteds
 % handles    structure with handles and user data (see GUIDATA)
 global click;
 global ecg;
 global textoant;
-global VParregloP; 
-global FParregloP; 
-global FNarregloP;
+global VParregloR; 
+global FParregloR; 
+global FNarregloR;
 if(click)
     click = false;
 else
+    
     x = eventdata.Indices(1);
     y = eventdata.Indices(2);
     celdaValor = eventdata.Source.Data(x, 1);
@@ -345,28 +400,27 @@ else
     if(y == 1 || y==2 || y == 3 || y==4) 
         xlim([celdaValor-1000 celdaValor+1000]);
         pos2 = [celdaValor ecg(celdaValor) 0];
-        ecgplothandles = handles.ecgPlotPT;
+        ecgplothandles = handles.ecgPlotR;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
     end
 end
 
-
-% --- Executes when selected cell(s) is changed in tablaFNP.
-function tablaFNP_CellSelectionCallback(hObject, eventdata, handles)
-% hObject    handle to tablaFNP (see GCBO)
+% --- Executes when selected cell(s) is changed in tablaFNR.
+function tablaFNR_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to tablaFNR (see GCBO)
 % eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
 %	Indices: row and column indices of the cell(s) currently selecteds
 % handles    structure with handles and user data (see GUIDATA)
 global click;
 global ecg;
 global textoant;
-global VParregloP; 
-global FParregloP; 
-global FNarregloP;
+global VParregloR; 
+global FParregloR; 
+global FNarregloR;
 if(click)
     click = false;
-    if(size(FNarregloP,1) == 1)
+    if(size(FNarregloR,1) == 1)
         x = eventdata.Indices(1);
         y = eventdata.Indices(2);
         celdaValor = cell2mat(eventdata.Source.Data(x, 1));
@@ -374,7 +428,7 @@ if(click)
         if(y == 1 || y==2 || y == 3 || y==4) 
             xlim([celdaValor-1000 celdaValor+1000]);
             pos2 = [celdaValor ecg(celdaValor) 0];
-            ecgplothandles = handles.ecgPlotPT;
+            ecgplothandles = handles.ecgPlotR;
             hold on;
             textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
         end
@@ -387,27 +441,26 @@ delete(textoant);
 if(y == 1 || y==2 || y == 3 || y==4) 
    xlim([celdaValor-1000 celdaValor+1000]);
    pos2 = [celdaValor ecg(celdaValor) 0];
-   ecgplothandles = handles.ecgPlotPT;
+   ecgplothandles = handles.ecgPlotR;
    hold on;
    textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
 end
 end
-
-% --- Executes when selected cell(s) is changed in tablaFPP.
-function tablaFPP_CellSelectionCallback(hObject, eventdata, handles)
-% hObject    handle to tablaFPP (see GCBO)
+% --- Executes when selected cell(s) is changed in tablaFPR.
+function tablaFPR_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to tablaFPR (see GCBO)
 % eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
 %	Indices: row and column indices of the cell(s) currently selecteds
 % handles    structure with handles and user data (see GUIDATA)
 global click;
 global ecg;
 global textoant;
-global VParregloP; 
-global FParregloP; 
-global FNarregloP;
+global VParregloR; 
+global FParregloR; 
+global FNarregloR;
 if(click)
     click = false;
-    if(size(FNarregloP,1) == 1)
+    if(size(FNarregloR,1) == 1)
         x = eventdata.Indices(1);
         y = eventdata.Indices(2);
         celdaValor = cell2mat(eventdata.Source.Data(x, 1));
@@ -415,7 +468,7 @@ if(click)
         if(y == 1 || y==2 || y == 3 || y==4) 
             xlim([celdaValor-1000 celdaValor+1000]);
             pos2 = [celdaValor ecg(celdaValor) 0];
-            ecgplothandles = handles.ecgPlotPT;
+            ecgplothandles = handles.ecgPlotR;
             hold on;
             textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
         end
@@ -428,7 +481,7 @@ else
     if(y == 1 || y==2 || y == 3 || y==4) 
         xlim([celdaValor-1000 celdaValor+1000]);
         pos2 = [celdaValor ecg(celdaValor) 0];
-        ecgplothandles = handles.ecgPlotPT;
+        ecgplothandles = handles.ecgPlotR;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
     end
