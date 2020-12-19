@@ -416,20 +416,26 @@ end
 %% Detección de los puntos S
 R_len= length(Rindex);               %Cantidad de picos R encontrados
 %El rango de busqueda en milisegundos va a cambiar para cada punto R.
-
 %Los pulsos están muy juntos este factor va a disminuir el rango de
 %búsqueda
 rango = round(fs*0.15);
-
 for j = 1:R_len                                   %Por cada pico:
     IR1 = Rindex(j);                                   %Número de muestra en la que ocurre el pico R
     Found = 0;                                          %Pico no encontrado (condición inicial)
     for i = IR1 : IR1 + rango                           %De la muestra IR1 busca 150ms
         if (1 < i) && (i < length(ecgs)) && (Found == 0)%15000
-            if ((ecgs(i) < ecgs(i+1)) && (ecgs(i) < ecgs(i-1))) %| (i == IR1 + rango)  %Busca (en unas 7 muestras adelante) si es menor entre dos puntos adyacentes (pico negativo correspondiente a S), derecha e izquierda
+            if((ecgs(Rindex(j)) < 0) && (ecgs(i) > ecgs(i-1)) && (ecgs(i) > ecgs(i+1)))
                 S_index(j)= i;                          %Guarda el número de muestra en el que ocurre el pico S
                 S_amp_ECG(j) = ecgs(i);              %Puntos S (sobre la curva ECG acondicionada)
-                Found = 1;                              %Pico encontrado, no continua con búsqueda 
+                Found = 1;                              %Pico encontrado, no continua con búsqueda
+            elseif ((ecgs(i) < ecgs(i+1)) && (ecgs(i) < ecgs(i-1))) %| (i == IR1 + rango)  %Busca (en unas 7 muestras adelante) si es menor entre dos puntos adyacentes (pico negativo correspondiente a S), derecha e izquierda
+                if(Rindex(j) == i)
+                else
+                    S_index(j)= i;                          %Guarda el número de muestra en el que ocurre el pico S
+                    S_amp_ECG(j) = ecgs(i);              %Puntos S (sobre la curva ECG acondicionada)
+                    Found = 1;                              %Pico encontrado, no continua con búsqueda
+                end
+                 
             elseif (i==IR1 + rango) && (Found==0)
                 S_index(j)= i;                          %Guarda el número de muestra en el que ocurre el pico S
                 S_amp_ECG(j) = ecgs(i);              %Puntos S (sobre la curva ECG acondicionada)
@@ -451,17 +457,26 @@ S_t=(1:length(ecgs))/360;
 for j = 1:R_len                                                 %Cantidad de picos R encontrados
     IR1 = Rindex(j);                                           %Por cada pico R encontrado, dado por su número de muestra:
     %buscas 60 ms hacia atras
-    rango = round(fs*0.08);
+    rango = round(fs*0.15);
     Found_Q = 0;                                                %Punto Q no encontrado (al inicio)
     Q_amp_ECG(j)=1;
     %Son los puntos donde estan los picos R
     for i = IR1 : -1 : IR1 - rango                              %Busca unas 7 muestras hacia atraz SE AMPLIO RANGO AL TRIPLE, DE 0.03 A 0.09
         %Se inicia i en IR+2 pues con solo IR se genera error de índice
         if (i < length(ecgs)) && (i > 1)
-            if  ((ecgs(i) <= ecgs(i+1)) && (ecgs(i)<= ecgs(i-1))&&ecgs(i)<Q_amp_ECG(j))%&&(Found_Q ==0)) %| (i == rango)     %Busca la menor muestra en las 7 muestras y que corresponde al Q (ubicado a la izquierda del R respectivo
+            if(ecgs(Rindex(j)) < 0 && ecgs(i) > ecgs(i+1) && ecgs(i) > ecgs(i-1))
                 Q_index(j)= i;                                  %Guarda el número de muestra en el que ocurre el pico Q
-                Q_amp_ECG(j) = ecgs(i);                      %Puntos S (sobre la curva ECG acondicionada)
-                %Found_Q = 1;                                    %Punto Q encontrado
+                Q_amp_ECG(j) = ecgs(i);
+                Found_Q = 1;
+            elseif  ((ecgs(i) <= ecgs(i+1)) && (ecgs(i)<= ecgs(i-1))&&ecgs(i)<Q_amp_ECG(j))%&&(Found_Q ==0)) %| (i == rango)     %Busca la menor muestra en las 7 muestras y que corresponde al Q (ubicado a la izquierda del R respectivo
+                if(Rindex(j) == i)
+                    
+                else              
+                    Q_index(j)= i;                                  %Guarda el número de muestra en el que ocurre el pico Q
+                    Q_amp_ECG(j) = ecgs(i);                      %Puntos S (sobre la curva ECG acondicionada)
+                    Found_Q = 1;                                    %Punto Q encontrado
+                end
+ 
             end
             
         elseif ((i == 1) || (i == length(ecgs))) && (Found_Q ==0)
@@ -480,11 +495,11 @@ for j = 1:R_len                                                 %Cantidad de pic
         Q_amp_ECG(j) = ecgs(ii);                      %Puntos S (sobre la curva ECG acondicionada)
     end
     
-    [qm qmi]=min(ecgs(Q_index(j):Rindex(j)));
-    if(qm<Q_amp_ECG(j))
-        Q_index(j)= Q_index(j)+qmi-1;                                  %Guarda el número de muestra en el que ocurre el pico S
-        Q_amp_ECG(j) = qm;                      %Puntos S (sobre la curva ECG acondicionada)
-    end
+%     [qm qmi]=min(ecgs(Q_index(j):Rindex(j)));
+%     if(qm<Q_amp_ECG(j))
+%         Q_index(j)= Q_index(j)+qmi-1;                                  %Guarda el número de muestra en el que ocurre el pico S
+%         Q_amp_ECG(j) = qm;                      %Puntos S (sobre la curva ECG acondicionada)
+%     end
     
 end
 

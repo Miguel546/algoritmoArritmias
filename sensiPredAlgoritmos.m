@@ -1,4 +1,4 @@
-function [matriz, VP,FP,FN, Sensi, Predp, VParreglo, FParreglo, FNarreglo]=sensiPred(algoritmo, qrs, prs, ritmoCardiaco, ritmoRegular, anotacionesBD, abreviatura)
+function [matriz, VP,FP,FN, Sensi, Predp, VParreglo, FParreglo, FNarreglo]=sensiPred(algoritmo, prs, qrs, ritmoCardiaco, hayOndaP, ritmoRegular, anotacionesBD, abreviatura)
 VP=0;
 FP=0;
 FN=length(anotacionesBD);
@@ -6,10 +6,10 @@ arrct=0;
 matriz = zeros(length(algoritmo) + 1,length(anotacionesBD) + 1);
 matriz(1,1) = "";
  for k=1:length(algoritmo)
-     matriz(k+1,1) = algoritmo(k);
+     matriz(k+1,1) = algoritmo{k};
      for n=1:size(anotacionesBD, 1)
          matriz(1,n + 1) = anotacionesBD(n, 1); 
-         if(algoritmo(k)<=anotacionesBD(n, 1)+20 && algoritmo(k)>=anotacionesBD(n, 1)-20)
+         if(algoritmo{k}<=anotacionesBD(n, 1)+20 && algoritmo{k}>=anotacionesBD(n, 1)-20)
              matriz(k+1, n+1) = 1;
              VP=VP+1;
              FN=FN-1;
@@ -40,10 +40,11 @@ for k=2:t
     for n=2:y
         if matriz(k,n) == 1
             VParreglo(m, 1) = matriz(k, 1);
-            VParreglo(m, 2) = qrs(k-1); 
-            VParreglo(m, 3) = prs(k-1);
-            VParreglo(m,4) = ritmoCardiaco(k-1);
-            VParreglo(m,5) = ritmoRegular(k-1);
+            VParreglo(m, 2) = prs{k-1}; 
+            VParreglo(m, 3) = qrs{k-1};
+            VParreglo(m, 4) = ritmoCardiaco{k-1};
+            VParreglo(m, 5) = hayOndaP{k-1};
+            VParreglo(m, 6) = ritmoRegular{k-1};
             %VParreglo(m,2) = matriz(1, n);
             m = m + 1;
         end

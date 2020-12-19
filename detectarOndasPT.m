@@ -1,4 +1,4 @@
-function [ecgs2, Rindex, Tindex, Pindex, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, numero, ecg, fs, Rindex, Q_index, S_index, K_index, gr)
+function [ecgs2, Rindex, Tindex, Pindex,  P_ON_index, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, numero, ecg, fs, Rindex, Q_index, S_index, K_index, gr)
 Tindex = 0;
 Pindex = 0;
 registrosP = ["100m", "101m", "103m", "106m", "117m", "119m", "122m", "207m", "214m", "222m", "223m", "231m"];
@@ -310,3 +310,27 @@ for j=1:length(Rindex)
         end
     end
 end
+
+for j = 1:length(Pindex)                                                 %Por cada K:
+    IP1 = Pindex(j)
+    P_pico = ecg(IP1);                                      %Pico de la onda P
+    
+    found = 0;
+    for i = IP1 : -1 : IP1 - (round(fs*0.08))       %Busca unos 80 ms antes del punto K
+        if (i > 1) & (abs(ecg(i-1)) < P_pico) 
+            P_pico = abs(ecg(i-1));                         %Si encuentra un valor mayor, actualiza el P_max
+            i_ON = i-1;
+            found = 1;
+        elseif (i == 1)
+            i_ON = i;
+            break;
+        else i_ON = i;
+        end
+    end
+
+    P_ON_index(j) = i_ON;                                     
+    P_ON_amp(j)= ecg(i_ON);                                     
+    
+end
+assignin('base','P_ON_index',P_ON_index);
+assignin('base','P_ON_amp',P_ON_amp);

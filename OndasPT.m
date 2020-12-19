@@ -223,7 +223,7 @@ registromit = items{seleccionarRegistro};
 
 fs = 360;
 [ecgnormal, ecg, Rindex, Q_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
-[ecgs2, Rindex2, Tindex, Pindex, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
+[ecgs2, Rindex, Tindex, Pindex,  P_ON_index, anotacionesP, block] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
 
 figura1 = figure;
 title(strcat('Ondas P ', {' '}, registromit));
@@ -276,7 +276,7 @@ copyfile('queriesAnotacionesP.mat', strcat('ondasPT/',fechahora, '/', 'queriesAn
 
 querie = evalin('base', 'anotacionRegistroP');
 nombresCol = {'registro','latidos','sensibilidad','predictividad','vp','fn','fp','errorsensibilidad','errorpredictividad','deteccionfallidalatidos','deteccionfallidaporc','tiempo', 'querie'};
-dataInsertar = {registromit, height(anotacionesP), SensiP, PredpP, VPP, FNP, FPP, 100-SensiP, 100-PredpP, FPP+FNP, (((FPP+FNP)/height(anotacionesP))*100), fechahora, querie};
+dataInsertar = {registromit, size(anotacionesP, 2), SensiP, PredpP, VPP, FNP, FPP, 100-SensiP, 100-PredpP, FPP+FNP, (((FPP+FNP)/size(anotacionesP, 2))*100), fechahora, querie};
 datainsert(conexionBD, 'ondasp', nombresCol, dataInsertar);
 
 set(handles.tablaVPP,'data',[])

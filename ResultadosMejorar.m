@@ -1,5 +1,5 @@
 registromit = '232m';
-load(strcat('Resultados/',registromit,'Resultados'));
+load(strcat('ResultadosRRMediaPicos/SinAnotaciones/', 'Resultados',registromit));
 dbname = 'mitarrythmiadatabase';
 username = 'root';
 password = 'root';
