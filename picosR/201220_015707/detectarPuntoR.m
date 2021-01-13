@@ -1,4 +1,4 @@
-function [ecg, ecgs, Rindex, Q_index, QOn_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, numero, fs, gr)
+function [ecg, ecgs, Rindex, Q_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, numero, fs, gr)
 load(strcat('registro/',registromit));
 load('queriesAnotaciones');
 anotacionRegistro = queries(numero - 1);
@@ -453,12 +453,13 @@ S_t=(1:length(ecgs))/360;
 % fprintf(1,'Picos S  detectados: %2.0f \n', length(S_index))
 
 %% Detección de los puntos Q
+
 for j = 1:R_len                                                 %Cantidad de picos R encontrados
     IR1 = Rindex(j);                                           %Por cada pico R encontrado, dado por su número de muestra:
     %buscas 60 ms hacia atras
     rango = round(fs*0.15);
     Found_Q = 0;                                                %Punto Q no encontrado (al inicio)
-    Q_amp_ECG(j)=2;
+    Q_amp_ECG(j)=1;
     %Son los puntos donde estan los picos R
     for i = IR1 : -1 : IR1 - rango                              %Busca unas 7 muestras hacia atraz SE AMPLIO RANGO AL TRIPLE, DE 0.03 A 0.09
         %Se inicia i en IR+2 pues con solo IR se genera error de índice
@@ -536,65 +537,4 @@ for j = 1:Q_len
         HRm=Rindex(j+1)-Rindex(j);
         HRm=60/(HRm/fs);
     end
-end
-
-
-%Hallando el Q_on
-Q_len = length(Q_index);                                   %Busca unos 30ms antes del Q, que la señal se haga cero o positiva
-HRm=Rindex(2)-Rindex(1);
-%Si el HRM que es el RR si el ritmo cardiaco es muy alto el rango de
-%busqueda disminuye y si el ritmo cardiaco es muy bajo el rango de busqueda
-%aumenta
-%HRm=60/(HRm/fs);
-for j = 1:Q_len
-    IQ1 = Q_index(j);
-    %buscas 60 ms hacia atras
-    rango = round(fs*0.07);
-    Found_Q = 0;                                                %Punto Q no encontrado (al inicio)
-    QOn_amp_ECG(j)=2;
-    %Son los puntos donde estan los picos R
-    for i = IQ1 : -1 : IQ1 - rango                              %Busca unas 7 muestras hacia atraz SE AMPLIO RANGO AL TRIPLE, DE 0.03 A 0.09
-        %Se inicia i en IR+2 pues con solo IR se genera error de índice
-        if (i < length(ecgs)) && (i > 1)
-            if  ((ecgs(i) >= ecgs(i+1)) && (ecgs(i)>= ecgs(i-1))&&ecgs(i)<QOn_amp_ECG(j))%&&(Found_Q ==0)) %| (i == rango)     %Busca la menor muestra en las 7 muestras y que corresponde al Q (ubicado a la izquierda del R respectivo
-                if(Q_index(j) == i)
-                    
-                    %disp(strcat('i-1: ', num2str(i-1), ', ecg(i-1)', num2str(ecgs(i-1)), ' , i: ', num2str(i), ', ecg(i): ', num2str(ecgs(i)), ', (i+1)', num2str(i+1), ', ecg(i+1)', num2str(ecgs(i+1))));
-                else              
-                    QOn_index(j)= i;                                  %Guarda el número de muestra en el que ocurre el pico Q
-                    QOn_amp_ECG(j) = ecgs(i);                      %Puntos S (sobre la curva ECG acondicionada)
-                    Found_Q = 1;            %Punto Q encontrado
-                    %disp(strcat('i-1: ', num2str(i-1), ', ecg(i-1)', num2str(ecgs(i-1)), ' , i: ', num2str(i), ', ecg(i): ', num2str(ecgs(i)), ', (i+1)', num2str(i+1), ', ecg(i+1)', num2str(ecgs(i+1))));
-                end
- 
-            end
-            
-        elseif ((i == 1) || (i == length(ecgs))) && (Found_Q ==0)
-            QOn_index(j)= i+1;                                  %Guarda el número de muestra en el que ocurre el pico S
-            QOn_amp_ECG(j) = ecgs(i+1);                      %Puntos S (sobre la curva ECG acondicionada)
-            Found_Q = 1;                                    %Punto Q encontrado
-            %disp(strcat('i-1: ', num2str(i-1), ', ecg(i-1)', num2str(ecgs(i-1)), ' , i: ', num2str(i), ', ecg(i): ', num2str(ecgs(i)), ', (i+1)', num2str(i+1), ', ecg(i+1)', num2str(ecgs(i+1))));
-           
-        end
-    end
-    
-    if Found_Q == 0                                              %Si no encuentra punto Q, lo asume a la mitad del rango de búsqueda
-        ii = Q_index(j) - round(rango/2);
-            if ii <= 0
-                ii =1;
-            end
-            QOn_index(j)= ii;                                  %Guarda el número de muestra en el que ocurre el pico Q
-            QOn_amp_ECG(j) = ecgs(ii);                      %Puntos S (sobre la curva ECG acondicionada)
-        %disp(strcat('i-1: ', num2str(i-1), ', ecg(i-1)', num2str(ecgs(i-1)), ' , i: ', num2str(i), ', ecg(i): ', num2str(ecgs(i)), ', (i+1)', num2str(i+1), ', ecg(i+1)', num2str(ecgs(i+1))));
-        
-    end
-    %disp(QOn_index(j));
-end
-    
-%     [qm qmi]=min(ecgs(Q_index(j):Rindex(j)));
-%     if(qm<Q_amp_ECG(j))
-%         Q_index(j)= Q_index(j)+qmi-1;                                  %Guarda el número de muestra en el que ocurre el pico S
-%         Q_amp_ECG(j) = qm;                      %Puntos S (sobre la curva ECG acondicionada)
-%     end
-    
 end

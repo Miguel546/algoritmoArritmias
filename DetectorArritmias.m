@@ -284,9 +284,9 @@ set(handles.tablaAnotaciones,'ColumnName',anotacionArritmia.Properties.VariableN
 %set(handles.tablaAnotaciones,'data',[])
 set(handles.tablaAnotaciones, 'data', table2cell(anotacionArritmia));
 fs = 360;
-[ecgnormal, ecg, Rindex, Q_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
+[ecgnormal, ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
 [ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
-[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, Tindex, K_index);
+[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
 %[ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia]= detectarArritmiasLiteratura(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, S_index, Q_index, Tindex, K_index);
 assignin('base', 'ecgs', ecgs2);
 %%
@@ -367,7 +367,7 @@ for i=1:length(largo)
     end
     
 end
-
+xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
 hold on,plot(ecgs); title(strcat('Registro', 32,  registromit));
 hold on,plot(S_index,ecgs(S_index),'r+');  %Grafica picos R sobre la curva ECG acondicionada
 hold on,plot(Rindex2,ecgs(Rindex2),'go');
@@ -555,6 +555,8 @@ arregloAnalizarVTa = arregloAnalizarVTa(:);
 arregloAnalizarSyBr = arregloAnalizarSyBr(:);
 arregloAnalizarAtFl = arregloAnalizarAtFl(:);
 arregloAnalizarOtraArritmia = arregloAnalizarOtraArritmia(:);
+
+
 if(~isempty(NSyR))
     [matrizNSyR, VPNSyR, FPNSyR, FNNSyR, SensiNSyR, PredpNSyR, VParregloNSyR, FParregloNSyR, FNarregloNSyR]=sensiPredAlgoritmos(NSyR(:,2), NSyR(:,3), NSyR(:,4), NSyR(:,5), NSyR(:,6), NSyR(:,7), cell2mat(arregloAnalizarNSyR), '(N');
     set(handles.tablaRSN, 'data', VParregloNSyR);
@@ -1160,4 +1162,4 @@ function ecgArritmias_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: place code in OpeningFcn to populate ecgArritmias
-cla(handles.ecgArritmias, 'reset');
+%cla(handles.ecgArritmias, 'reset');

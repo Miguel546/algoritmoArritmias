@@ -232,7 +232,7 @@ seleccionarRegistro=get(handles.menuPicoR, 'value');
 registromit = items{seleccionarRegistro};
 
 fs = 360;
-[ecgnormal, ecg, Rindex, Q_index, QOn_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
+[ecgnormal, ecg, Rindex, Q_index, S_index, K_index, anotacion, locs, ecg_hplot, ecg_dplot, ecg_splot, ecg_mplot, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
 gr = 1;
 
 figura1 = figure,
@@ -282,7 +282,7 @@ if gr
    hold on,plot(locs,NOISL_buf,'LineWidth',2,'Linestyle','--','color','k');xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
    hold on,plot(locs,SIGL_buf,'LineWidth',2,'Linestyle','-.','color','r');xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
    hold on,plot(locs,THRS_buf,'LineWidth',2,'Linestyle','-.','color','g');xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
-   az(3)=subplot(313);xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
+   az(3)=subplot(313);;xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
    plot(ecg-mean(ecg));xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
    title('Tren de pulsos del QRS encontrado en la señal de ECG');
    axis tight;
@@ -302,8 +302,6 @@ assignin('base','FNarregloR',FNarregloR);
 axes(ecgPlotR);
 plot(ecg);title(strcat('Registro', 32,  registromit));xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
 hold on,plot(Rindex,ecg(Rindex),'go');
-hold on,plot(QOn_index,ecg(QOn_index),'ro');
-hold on,plot(Q_index,ecg(Q_index),'bo');
 hold on,plot(anotacion.('Sample'),ecg(anotacion.('Sample')),'m^');
 
 legend('ecg','Rindex', 'anotaciones');

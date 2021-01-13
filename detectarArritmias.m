@@ -1,4 +1,4 @@
-function [NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados] = detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex, Pindex, P_ON_index, S_index, Q_index, Tindex, K_index);
+function [NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados] = detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
 
 contNSyR = 1;
 contSyBr = 1;
@@ -45,7 +45,7 @@ for i = 1 : length(Rindex)
             hayondaP=0;
         end
         
-        PR=Q_index(i)-PIN;
+        PR=QOn_index(i)-PIN;
         PRms=(PR/fs)*1000;
         
         %El ancho del QRS en muestras
@@ -70,7 +70,7 @@ for i = 1 : length(Rindex)
         end
         cuantasOndasP(i, 1) = i;
         cuantasOndasP(i, 2) = contP;
-        PR=Q_index(i)-PIN;
+        PR=QOn_index(i)-PIN;
         PRms=(PR/360)*1000;
         
         if(cuantasOndasP(i, 2) >= 1)
@@ -84,7 +84,7 @@ for i = 1 : length(Rindex)
        %El ancho del QRS en ms
         QRSms=(QRS/360)*1000;
         
-        if(QRSms<120)
+        if(QRSms<125)
             normalqrs=1;
         else
             normalqrs=0;
@@ -95,7 +95,7 @@ for i = 1 : length(Rindex)
         HayOndaPRegistro(i) = cuantasOndasP(i, 2);
         desviacion(i) = desviacion(i-1);
         
-        if(60/(RR(i-1)/fs)<50)
+        if(60/(RR(i-1)/fs)<55)
                         latnormal=0;
                         taqui=0;
                         bradi=1;
@@ -125,15 +125,15 @@ for i = 1 : length(Rindex)
                     end
                     
                     %Pruebas variando
-                    if(PRms>120&&PRms<=250)
+                    if(PRms>120&&PRms<=200)
                         PRint=1;
-                    elseif(PRms>250)
+                    elseif(PRms>200)
                         PRint=2;
                     else
                         PRint=0;
                     end
                     
-                    if(QRSms<120)
+                    if(QRSms<125)
                         normalqrs=1;
                     else
                         normalqrs=0;
@@ -277,7 +277,7 @@ for i = 1 : length(Rindex)
         else
             hayondaP=0;
         end
-        PR=Q_index(i)-PIN;
+        PR=QOn_index(i)-PIN;
         PRms=(PR/360)*1000;
         
         %El ancho del QRS en muestras
@@ -302,7 +302,7 @@ for i = 1 : length(Rindex)
                     else
                         hayondaP=0;
                     end
-                    if(60/(RR(j)/fs)<50)
+                    if(60/(RR(j)/fs)<55)
                         latnormal=0;
                         taqui=0;
                         bradi=1;
@@ -332,15 +332,15 @@ for i = 1 : length(Rindex)
                     
                     
                     %Pruebas variando
-                    if(PRms>120&&PRms<=250)
+                    if(PRms>120&&PRms<=200)
                         PRint=1;
-                    elseif(PRms>250)
+                    elseif(PRms>200)
                         PRint=2;
                     else
                         PRint=0;
                     end
                     
-                    if(QRSms<120)
+                    if(QRSms<125)
                         normalqrs=1;
                     else
                         normalqrs=0;
@@ -469,7 +469,7 @@ for i = 1 : length(Rindex)
                 desviacion(i) = (RRnorm(i) - mean(RRnorm(i-diezSegundosMuestra+1:i)))^2;
                 
                 
-                if(60/(RR(i)/fs)<50)
+                if(60/(RR(i)/fs)<55)
                         latnormal=0;
                         taqui=0;
                         bradi=1;
@@ -498,15 +498,15 @@ for i = 1 : length(Rindex)
                     end
                     
                     %Pruebas variando
-                    if(PRms>120&&PRms<=250)
+                    if(PRms>120&&PRms<=200)
                         PRint=1;
-                    elseif(PRms>250)
+                    elseif(PRms>200)
                         PRint=2;
                     else
                         PRint=0;
                     end
                     
-                    if(QRSms<120)
+                    if(QRSms<125)
                         normalqrs=1;
                     else
                         normalqrs=0;

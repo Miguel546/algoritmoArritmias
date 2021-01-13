@@ -303,7 +303,6 @@ axes(ecgPlotR);
 plot(ecg);title(strcat('Registro', 32,  registromit));xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
 hold on,plot(Rindex,ecg(Rindex),'go');
 hold on,plot(QOn_index,ecg(QOn_index),'ro');
-hold on,plot(Q_index,ecg(Q_index),'bo');
 hold on,plot(anotacion.('Sample'),ecg(anotacion.('Sample')),'m^');
 
 legend('ecg','Rindex', 'anotaciones');
