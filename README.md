@@ -74,7 +74,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 | 232m        | 1780              | 1774 | 9   | 6   | 99.66292135  | 99.49523275   |
 | 233m        | 3079              | 3076 | 1   | 3   | 99.90256577  | 99.96750081   |
 | 234m        | 2753              | 2752 | 0   | 1   | 99.96367599  | 100           |
-| 12 registros | 22108 | 20282 | 1826 | 4524 | 91.74054641 | 81.76247682 |
+| 48 registros | 109940 | 106022 | 3996 | 3918 | 96.43623795 | 96.36786708 |
 
 **2. Elgendi, 2014** propuso un método basado en dos filtros de promedio móvil seguido de un umbral de duración de evento dinámico para detectar ondas P y T en señales electrocardiográficas. La detección de las ondas P y T es afectada por la calidad de las grabaciones de electrocardiogramas y las anormalidades de las señales electrocardiográficas. Dicho método detecta ondas P y T en señales electrocardiográficas de arritmias que sufren: 1) efectos no estacionarios, 2) baja relación señal / ruido, 3) Complejo auricular prematuro, 5) Bloques de rama izquierda y 6) Bloques de rama derecha. Cabe destacar que el detector de ondas P y T obtuvo una sensibilidad del 98.05 por ciento y una predictividad positiva del 97.11 por ciento para las ondas P sobre 10 registros de la base de datos de arritmia MIT-BIH con 21702 latidos
 
@@ -92,6 +92,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 | 222m         | 1257              | 1177                 | 80               | 1230             | 93.63564041  | 48.89904445   |
 | 223m         | 2099              | 2079                 | 20               | 497              | 99.04716532  | 80.70652174   |
 | 231m         | 1994              | 1567                 | 427              | 3                | 78.58575727  | 99.8089172    |
+| 12 registros | 22108 | 20282 | 1826 | 4524 | 91.74054641 | 81.76247682 |
 
 **3. Boonperm, 2014** et al. propone un programa con interfaz gráfica que detecta arritmias usando MATLAB con los parámetros de el complejo QRS, la onda P, intervalo RR, el intervalo PR, y el ritmo del ECG usando la base de datos de arritmias del MIT.
 
