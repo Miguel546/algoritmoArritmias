@@ -22,10 +22,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 ![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
 
-
-Luego tenemos 
-
-Tabla de resultados Pan Tompkins
+**Tabla de resultados Pan Tompkins**
 
 | registromit | Numero de latidos | VPR  | FPR | FNR | Sensibilidad | Predictividad |
 |-------------|-------------------|------|-----|-----|--------------|---------------|
