@@ -192,4 +192,4 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 | 233m         | Otra Arritmia           | 52.63        | 14.01         | 190               | 100   | 614   | 90    |
 | 234m         | Ritmo Sinusal Normal    | 71.38        | 100.00        | 2711              | 1935  | 0     | 776   |
 | 234m         | Otra Arritmia           | 2.00         | 20.00         | 50                | 1     | 4     | 49    |
-| 48 registros                           | 30.76        | 53.60         | 110253            | 33915 | 29357 | 76338 |
+| 48 registros |                         | 30.76        | 53.60         | 110253            | 33915 | 29357 | 76338 |
