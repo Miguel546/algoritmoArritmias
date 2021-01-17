@@ -14,6 +14,17 @@ Para poder ejecutar el programa ubicarse sobre el archivo **PicoR.fig** y darle 
 
 ![Open in Guide PicosR](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoROpenGuide.png)
 
+Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
+
+![Run Figure - Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoRPlay.png)
+
+Después se abrirá el programa para hallar los Picos R. Selecciona el registro a analizar(100m-234m). Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
+
+![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
+
+
+Luego tenemos 
+
 Tabla de resultados Pan Tompkins
 
 | registromit | Numero de latidos | VPR  | FPR | FNR | Sensibilidad | Predictividad |
