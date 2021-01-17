@@ -277,7 +277,7 @@ copyfile('queriesAnotacionesP.mat', strcat('ondasPT/',fechahora, '/', 'queriesAn
 
 querie = evalin('base', 'anotacionRegistroP');
 nombresCol = {'registro','latidos','sensibilidad','predictividad','vp','fn','fp','errorsensibilidad','errorpredictividad','deteccionfallidalatidos','deteccionfallidaporc','tiempo', 'querie'};
-dataInsertar = {registromit, size(anotacionesP, 1), SensiP, PredpP, VPP, FNP, FPP, 100-SensiP, 100-PredpP, FPP+FNP, (((FPP+FNP)/size(anotacionesP, 1))*100), fechahora, querie};
+dataInsertar = {registromit, size(anotacionesP, 2), SensiP, PredpP, VPP, FNP, FPP, 100-SensiP, 100-PredpP, FPP+FNP, (((FPP+FNP)/size(anotacionesP, 2))*100), fechahora, querie};
 datainsert(conexionBD, 'ondasp', nombresCol, dataInsertar);
 
 set(handles.tablaVPP,'data',[])
