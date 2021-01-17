@@ -10,6 +10,10 @@ Para descargarse los registros tiene que acceder a la siguiente url: https://arc
 
 1 Pan & Tompkins, 1985 desarrollaron un algoritmo en tiempo real para la detección de complejos QRS en señales electrocardiográficas, el cual es capaz de detectar el complejo QRS basado en la pendiente, amplitud y ancho. Un filtro pasabanda especial reduce falsas detecciones causadas por varios tipos de ruido presentes en la señal ECG lo cual permite el uso de umbrales lo que aumenta la sensibilidad de detección. El algoritmo ajusta automáticamente los umbrales y los parámetros periódicamente para adaptarse a los cambios de electrocardiograma como la morfología QRS y la frecuencia cardíaca” (Pan Tompkins, 1985, p. 230).  Para el estándar de la base de datos de arritmias del MIT-BIH 24 horas, se replicó el algoritmo Pan-Tompkins en MATLAB detectando correctamente el 96,32% de los complejos QRS mientras que en el artículo original dice un 99.3% por lo tanto el valor obtenido oscila con el original.
 
+Para poder ejecutar el programa ubicarse sobre el archivo **PicoR.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
+
+![Open in Guide PicosR](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoROpenGuide.png)
+
 Tabla de resultados Pan Tompkins
 
 | registromit | Numero de latidos | VPR  | FPR | FNR | Sensibilidad | Predictividad |
