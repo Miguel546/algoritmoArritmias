@@ -102,9 +102,11 @@ Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el
 
 ![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaPPlay.png)
 
-Después se abrirá el programa para hallar los Picos R. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
+Después se abrirá el programa para hallar los Ondas P. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
 ![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
+
+**Tabla de resultados Elgendi**
 
 | Registro MIT | Número de ondas P | Verdaderos positivos | Falsos negativos | Falsos positivos | Sensibilidad | Predictividad |
 |--------------|-------------------|----------------------|------------------|------------------|--------------|---------------|
@@ -135,7 +137,19 @@ Después se abrirá el programa para hallar los Picos R. Selecciona un registros
 | Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
 | Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | < 125 ms     |
 
-Tabla de resultados Arritmias
+Para poder ejecutar el programa ubicarse sobre el archivo **DetectorArritmias.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
+
+![Open in Guide DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasOpenGuide.png)
+
+Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
+
+![Run Figure - DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasPlay.png)
+
+Después se abrirá el programa para detectar las arritmias. Selecciona un registros de los 48 del MIT-BIH 24h Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. La aplicación detecta la arritmia y te dice en que muestra la detecta.
+
+![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
+
+**Tabla de resultados Arritmias**
 
 | Registro     | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
 |--------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
@@ -236,3 +250,9 @@ Tabla de resultados Arritmias
 | 234m         | Ritmo Sinusal Normal    | 71.38        | 100.00        | 2711              | 1935  | 0     | 776   |
 | 234m         | Otra Arritmia           | 2.00         | 20.00         | 50                | 1     | 4     | 49    |
 | 48 registros |                         | 30.76        | 53.60         | 110253            | 33915 | 29357 | 76338 |
+
+## Conclusiones
+
+* Se implementó el algoritmo Pan Tompkins para hallar los picos R con una sensibilidad de 96.43% y predictividad de 96.36% sobre los 48 registros que proporciona la base de datos de arritmias del MIT-BIH 24H.
+* Se implementó el algoritmo de Mohamed Elgendi para hallar las ondas P con una sensibilidad de 91.74% y predictividad de 81.76% sobre los 12 registros que proporciona la base de datos de arritmias del MIT-BIH 24H para las ondas P.
+* Se implementó las reglas de decisión de Parayikorn para poder detectar las arritmias con una sensibilidad de 30.76% y predictividad de 53.60% sobre los 48 registros de la base de datos de arritmias del MIT-BIH 24H.
