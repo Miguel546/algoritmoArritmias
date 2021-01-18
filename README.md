@@ -78,6 +78,18 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 **2. Elgendi, 2014** propuso un método basado en dos filtros de promedio móvil seguido de un umbral de duración de evento dinámico para detectar ondas P y T en señales electrocardiográficas. La detección de las ondas P y T es afectada por la calidad de las grabaciones de electrocardiogramas y las anormalidades de las señales electrocardiográficas. Dicho método detecta ondas P y T en señales electrocardiográficas de arritmias que sufren: 1) efectos no estacionarios, 2) baja relación señal / ruido, 3) Complejo auricular prematuro, 5) Bloques de rama izquierda y 6) Bloques de rama derecha. Cabe destacar que el detector de ondas P y T obtuvo una sensibilidad del 98.05 por ciento y una predictividad positiva del 97.11 por ciento para las ondas P sobre 10 registros de la base de datos de arritmia MIT-BIH con 21702 latidos
 
+Para poder ejecutar el programa ubicarse sobre el archivo **OndasPT.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
+
+![Open in Guide OndasP](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndasPOpenGuide.png)
+
+Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
+
+![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaPPlay.png)
+
+Después se abrirá el programa para hallar los Picos R. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
+
+![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
+
 | Registro MIT | Número de ondas P | Verdaderos positivos | Falsos negativos | Falsos positivos | Sensibilidad | Predictividad |
 |--------------|-------------------|----------------------|------------------|------------------|--------------|---------------|
 | 100m         | 2257              | 2255.00              | 2.00             | 18.00            | 99.9113868   | 99.20809503   |
@@ -95,6 +107,19 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 | 12 registros | 22108 | 20282 | 1826 | 4524 | 91.74054641 | 81.76247682 |
 
 **3. Boonperm, 2014** et al. propone un programa con interfaz gráfica que detecta arritmias usando MATLAB con los parámetros de el complejo QRS, la onda P, intervalo RR, el intervalo PR, y el ritmo del ECG usando la base de datos de arritmias del MIT.
+
+***Cinco características para clasificar arritmias.***
+
+| Arritmia                | Ritmo     | Ritmo cardiaco | Onda P | Intervalo PR | Complejo QRS |
+|-------------------------|-----------|----------------|--------|--------------|--------------|
+| Ritmo sinusal normal    | Regular   | 55-100 lpm     | 1      | 120-200 ms   | < 125 ms     |
+| Bradicardia sinusal     | Regular   | < 55 lpm       | 1      | 120-200ms    | < 125 ms     |
+| Fibrilación auricular   | Irregular | cualquiera     | >=1    | No           | < 125 ms     |
+| Flutter atrial          | Regular   | cualquiera     | >=1    | No           | < 125 ms     |
+| Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
+| Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | < 125 ms     |
+
+Tabla de resultados Arritmias
 
 | Registro     | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
 |--------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
