@@ -2,6 +2,10 @@
 
 Las arritmias son anomalías en el correcto funcionamiento del sistema eléctrico del corazón. Las cuatro cámaras del corazón por lo general laten con un patrón estable y rítmico. La presencia de arritmias es peligrosa para quien las padece y de no ser tratadas a tiempo pueden devenir en enfermedades cardiovasculares que traerán consecuencias fatales y podrían producir la muerte. Para detectar arritmias cardiacas en forma temprana se suelen utilizar monitores de funciones vitales que son costosos, no son portables y cuyo software no es abierto. Ante este contexto se propone una aplicación para la detección de las arritmias: Bradicardia Sinusal, Taquicardia Ventricular, Fibrilación Auricular, Flutter Auricular y Aleteo Auricular, a partir de los algoritmos Pan y Tompkins, Elgendi y Boonperm cuyo código podría ser instalado en dispositivos móviles (Android y iOS) para que los monitores de funciones vitales no sean la única opción para poder detectar dichas arritmias. El algoritmo ensamblado ha sido probado con la base de datos de arritmias del MIT-BIH, primer conjunto de datos de prueba estándar disponible para el ámbito académico. Se analizaron los 48 registros de dicha base de datos y se obtuvo 30.76% de sensibilidad y 53.60% de predictividad en la detección de arritmias, a pesar de los valores obtenidos en la detección de los complejos QRS se obtuvo 96.43 sensibilidad y 96.37% predictividad, lo cual indica que el algoritmo híbrido es confiable solo para la detección de complejos QRS. 
 
+Figura en la que se compara un electrocardiograma de un corazón sano y un electrocardiograma de una Fibrilación Auricular.
+
+![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/rsn_fa.png)
+
 ## Requisitos
 
 - MATLAB 2015 o superior
