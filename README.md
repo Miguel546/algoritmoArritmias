@@ -253,6 +253,6 @@ Después se abrirá el programa para detectar las arritmias. Selecciona un regis
 
 ## Conclusiones
 
-* Se implementó el algoritmo Pan Tompkins para hallar los picos R con una sensibilidad de 96.43% y predictividad de 96.36% sobre los 48 registros que proporciona la base de datos de arritmias del MIT-BIH 24.
-* Se implementó el algoritmo de Mohamed Elgendi para hallar las ondas P con una sensibilidad de 91.74% y predictividad de 81.76% sobre los 12 registros que proporciona la base de datos de arritmias del MIT-BIH 24 para las ondas P.
-* Se implementó las reglas de decisión de Parayikorn para poder detectar las arritmias con una sensibilidad de 30.76% y predictividad de 53.60% sobre los 48 registros de la base de datos de arritmias del MIT-BIH 24.
+* Se implementó el algoritmo Pan Tompkins para hallar los picos R con una sensibilidad de 96.43% y predictividad de 96.36% sobre los 48 registros que proporciona la base de datos de arritmias del MIT-BIH 24H.
+* Se implementó el algoritmo de Mohamed Elgendi para hallar las ondas P con una sensibilidad de 91.74% y predictividad de 81.76% sobre los 12 registros que proporciona la base de datos de arritmias del MIT-BIH 24H para las ondas P.
+* Se implementó las reglas de decisión de Parayikorn para poder detectar las arritmias con una sensibilidad de 30.76% y predictividad de 53.60% sobre los 48 registros de la base de datos de arritmias del MIT-BIH 24H.
