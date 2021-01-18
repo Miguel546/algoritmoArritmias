@@ -102,9 +102,11 @@ Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el
 
 ![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaPPlay.png)
 
-Después se abrirá el programa para hallar los Picos R. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
+Después se abrirá el programa para hallar los Ondas P. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
 ![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
+
+**Tabla de resultados Elgendi**
 
 | Registro MIT | Número de ondas P | Verdaderos positivos | Falsos negativos | Falsos positivos | Sensibilidad | Predictividad |
 |--------------|-------------------|----------------------|------------------|------------------|--------------|---------------|
@@ -135,7 +137,19 @@ Después se abrirá el programa para hallar los Picos R. Selecciona un registros
 | Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
 | Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | < 125 ms     |
 
-Tabla de resultados Arritmias
+Para poder ejecutar el programa ubicarse sobre el archivo **DetectorArritmias.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
+
+![Open in Guide DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasOpenGuide.png)
+
+Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
+
+![Run Figure - DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasPlay.png)
+
+Después se abrirá el programa para detectar las arritmias. Selecciona un registros de los 48 del MIT-BIH 24h Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. La aplicación detecta la arritmia y te dice en que muestra la detecta.
+
+![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
+
+**Tabla de resultados Arritmias**
 
 | Registro     | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
 |--------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
