@@ -4,7 +4,7 @@ Las arritmias son anomalías en el correcto funcionamiento del sistema eléctric
 
 Figura en la que se compara un electrocardiograma de un corazón sano y un electrocardiograma de una Fibrilación Auricular.
 
-![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/rsn_fa.png)
+![ECG_RSN_FA](imagenes/rsn_fa.png)
 
 ## Requisitos
 
