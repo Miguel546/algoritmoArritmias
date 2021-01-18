@@ -113,7 +113,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona un registros
 | Arritmia                | Ritmo     | Ritmo cardiaco | Onda P | Intervalo PR | Complejo QRS |
 |-------------------------|-----------|----------------|--------|--------------|--------------|
 | Ritmo sinusal normal    | Regular   | 55-100 lpm     | 1      | 120-200 ms   | < 125 ms     |
-| Bradicardia sinusal     | Regular   | < 50 lpm       | 1      | 120-200ms    | < 125 ms     |
+| Bradicardia sinusal     | Regular   | < 55 lpm       | 1      | 120-200ms    | < 125 ms     |
 | Fibrilación auricular   | Irregular | cualquiera     | >=1    | No           | < 125 ms     |
 | Flutter atrial          | Regular   | cualquiera     | >=1    | No           | < 125 ms     |
 | Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
