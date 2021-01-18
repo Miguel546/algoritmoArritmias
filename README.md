@@ -108,6 +108,19 @@ Después se abrirá el programa para hallar los Picos R. Selecciona un registros
 
 **3. Boonperm, 2014** et al. propone un programa con interfaz gráfica que detecta arritmias usando MATLAB con los parámetros de el complejo QRS, la onda P, intervalo RR, el intervalo PR, y el ritmo del ECG usando la base de datos de arritmias del MIT.
 
+***Cinco características para clasificar arritmias.***
+
+| Arritmia                | Ritmo     | Ritmo cardiaco | Onda P | Intervalo PR | Complejo QRS |
+|-------------------------|-----------|----------------|--------|--------------|--------------|
+| Ritmo sinusal normal    | Regular   | 55-100 lpm     | 1      | 120-200 ms   | < 125 ms     |
+| Bradicardia sinusal     | Regular   | < 50 lpm       | 1      | 120-200ms    | < 125 ms     |
+| Fibrilación auricular   | Irregular | cualquiera     | >=1    | No           | < 125 ms     |
+| Flutter atrial          | Regular   | cualquiera     | >=1    | No           | < 125 ms     |
+| Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
+| Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | < 125 ms     |
+
+Tabla de resultados Arritmias
+
 | Registro     | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
 |--------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
 | 100m         | Ritmo Sinusal Normal    | 95.64        | 100.00        | 2273              | 2174  | 0     | 99    |
