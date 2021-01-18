@@ -4,7 +4,7 @@ Las arritmias son anomalías en el correcto funcionamiento del sistema eléctric
 
 Figura en la que se compara un electrocardiograma de un corazón sano y un electrocardiograma de una Fibrilación Auricular.
 
-![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/rsn_fa.png)
+![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/rsn_fa.png)
 
 ## Requisitos
 
@@ -32,15 +32,15 @@ Para descargarse los registros tiene que acceder a la siguiente url: https://arc
 
 Para poder ejecutar el programa ubicarse sobre el archivo **PicoR.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
 
-![Open in Guide PicosR](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoROpenGuide.png)
+![Open in Guide PicosR](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/picoROpenGuide.png)
 
 Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
 
-![Run Figure - Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoRPlay.png)
+![Run Figure - Picos R](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/picoRPlay.png)
 
 Después se abrirá el programa para hallar los Picos R. Selecciona el registro a analizar(100m-234m). Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
-![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
+![Picos R](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/PicoR.png)
 
 **Tabla de resultados Pan Tompkins**
 
@@ -100,15 +100,15 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 Para poder ejecutar el programa ubicarse sobre el archivo **OndasPT.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
 
-![Open in Guide OndasP](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndasPOpenGuide.png)
+![Open in Guide OndasP](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/OndasPOpenGuide.png)
 
 Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
 
-![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaPPlay.png)
+![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/OndaPPlay.png)
 
 Después se abrirá el programa para hallar los Ondas P. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
-![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
+![Ondas P](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/OndaP.png)
 
 **Tabla de resultados Elgendi**
 
@@ -143,15 +143,15 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 
 Para poder ejecutar el programa ubicarse sobre el archivo **DetectorArritmias.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
 
-![Open in Guide DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasOpenGuide.png)
+![Open in Guide DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/ArritmiasOpenGuide.png)
 
 Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
 
-![Run Figure - DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasPlay.png)
+![Run Figure - DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/ArritmiasPlay.png)
 
 Después se abrirá el programa para detectar las arritmias. Selecciona un registros de los 48 del MIT-BIH 24h Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. La aplicación detecta la arritmia y te dice en que muestra la detecta.
 
-![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
+![Arritmias](https://github.com/Miguel546/algoritmoArritmias/tree/gh-pages/imagenes/Arritmias.png)
 
 **Tabla de resultados Arritmias**
 
