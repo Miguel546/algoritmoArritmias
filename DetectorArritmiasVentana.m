@@ -34,7 +34,8 @@ OARRAlgoritmo = [];
 %registrosmit = {'100m' '101m' '102m' '103m' '104m' '105m' '106m' '107m' '108m' '109m' '111m' '112m' '113m' '114m' '115m' '116m' '117m' '118m' '119m' '121m' '122m' '123m' '124m' '200m' '201m' '202m' '203m' '205m' '207m' '208m' '209m' '210m' '212m' '213m' '214m' '215m' '217m' '219m' '220m' '221m' '222m' '223m' '228m' '230m' '231m' '232m' '233m' '234m'};
 %registrosmit = {'205m' '207m' '208m' '209m' '210m' '212m' '213m' '214m' '215m' '217m' '219m' '220m' '221m' '222m' '223m' '228m' '230m' '231m' '232m' '233m' '234m'};
 
-registrosmit = {'100m' '103m' '112m' '201m' '207m' '221m' '222m' '223m' '232m'};
+%registrosmit = {'100m' '103m' '112m' '201m' '207m' '221m' '222m' '223m' '232m'};
+registrosmit = {'100m' '101m' '102m' '103m' '104m' '105m' '106m' '107m' '108m' '109m' '111m' '112m' '113m' '114m' '115m' '116m' '117m' '118m' '119m' '121m' '122m' '123m' '124m' '200m' '201m' '202m' '203m' '205m' '207m' '208m' '209m' '210m' '212m' '213m' '214m' '215m' '217m' '219m' '220m' '221m' '222m' '223m' '228m' '230m' '231m' '232m' '233m' '234m'};
 pruebasTesis = [1800 3600 7200 18000 36000 72000 180000 360000];
 pruebasRandom = [648200 646400 642800 632000 614000 578000 470000 290000];
 cuadroMandoArreglo = {'Cuadro de mando 5 segundos' 'Cuadro de mando 10 segundos' 'Cuadro de mando 20 segundos' 'Cuadro de mando 50 segundos' 'Cuadro de mando 100 segundos' 'Cuadro de mando 200 segundos' 'Cuadro de mando 500 segundos' 'Cuadro de mando 1000 segundos'};

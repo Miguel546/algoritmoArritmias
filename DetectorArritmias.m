@@ -168,7 +168,7 @@ global ecg;
 global ecgs;
 global ecgs2;
 global PicoR;
-
+global ecgsamp;
 count = count + 1;
 
 if(count == 1)
@@ -179,7 +179,7 @@ if(count == 1)
    xlim([posx-1000 posx+1000]);
    %ecg = getappdata(0, 'ecg');
    %ecg = ecg(:);
-   pos2 = [posx ecgs(posx) 0];
+   pos2 = [posx ecgsamp(posx) 0];
    set(handles.edit_y_Arritmias, 'String', pos2(2));
    ecgplothandles = handles.ecgArritmias;
    hold on;
@@ -209,7 +209,7 @@ else
    xlim([posx-1000 posx+1000]);
   % ecg = getappdata(0, 'ecg');
    %ecg = ecg(:);
-   pos2 = [posx ecgs(posx) 0];
+   pos2 = [posx ecgsamp(posx) 0];
    set(handles.edit_y_Arritmias, 'String', pos2(2));
    ecgplothandles = handles.ecgArritmias;
    hold on;
@@ -263,6 +263,7 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VParregloOtraArritmia;
+global ecgsamp;
 
 click = true;
 cla(handles.ecgArritmias);
@@ -284,8 +285,9 @@ set(handles.tablaAnotaciones,'ColumnName',anotacionArritmia.Properties.VariableN
 %set(handles.tablaAnotaciones,'data',[])
 set(handles.tablaAnotaciones, 'data', table2cell(anotacionArritmia));
 fs = 360;
-[ecgnormal, ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, seleccionarRegistro, fs, 0);
-[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
+[ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion, locs, ecg_h, ecg_d, ecg_s, ecg_m, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = pan_tompkin(conexionBD, registromit, seleccionarRegistro, fs, 0);
+
+[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, seleccionarRegistro, ecg, fs, Rindex, Q_index, S_index, K_index,0);
 [NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
 %[ritmoregular, bradicardiamatriz, taquicardiamatriz, PicoR, NSyR, SyBr, SyTa, SyAr, AtFl, AtFib, VTa, VFl, B1Gr, OtraArritmia]= detectarArritmiasLiteratura(conexionBD, registromit, seleccionarRegistro, ecgs2, fs, Rindex2, Pindex, S_index, Q_index, Tindex, K_index);
 assignin('base', 'ecgs', ecgs2);
@@ -370,7 +372,7 @@ end
 xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
 hold on,plot(ecgs); title(strcat('Registro', 32,  registromit));
 hold on,plot(S_index,ecgs(S_index),'r+');  %Grafica picos R sobre la curva ECG acondicionada
-hold on,plot(Rindex2,ecgs(Rindex2),'go');
+hold on,plot(Rindex,ecgs(Rindex),'go');
 hold on, plot(Q_index, ecgs(Q_index),'r*');
 %hold on,plot(K_index,ecgs(K_index),'b+');  %K_amp_ECG
 hold on,plot(Pindex,ecgs(Pindex),'ko');
@@ -384,11 +386,15 @@ legend('ECG','Punto S','Punto R','Punto Q','Onda P', 'P onset', 'Cuadrados ECG')
 handles.ecgArritmias.XRuler.Exponent = 0;
 
 ecgPlot = datacursormode(handles.figure1);
-R_amp= ecgs(Rindex2);
+for i=1:length(ecgs)
+   ecgsamp(i) = ecgs(i);
+end
+ecgsamp = ecgsamp(:);
+R_amp= ecgs(Rindex);
 P_amp= ecgs(Pindex);
 set(ecgPlot ,'UpdateFcn', {@myupdatefcn, handles.edit_x_Arritmias, handles.edit_y_Arritmias, 0});
-Rindex2 = Rindex2(:);
-assignin('base','Rindex',Rindex2);
+Rindex = Rindex(:);
+assignin('base','Rindex',Rindex);
 assignin('base','Pindex',Pindex);
 assignin('base','Tindex',Tindex);
 assignin('base','RindexAmp', R_amp);
@@ -688,6 +694,7 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
+global ecgsamp;
 
 if(click)
     click = false;
@@ -735,6 +742,7 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
+global ecgsamp;
 
 set(handles.arritmiaDetectada, 'String', 'Ritmo sinusal normal');
 if(click)
@@ -746,7 +754,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -777,8 +785,8 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
-
-set(handles.arritmiaDetectada, 'String', 'Bradicardia sinusal');
+global ecgsamp;
+set(handles.arritmiaDetectada, 'String', 'Bradicardia sinusal');v
 if(click)
     click = false;
 else
@@ -788,7 +796,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -825,6 +833,7 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
+global ecgsamp;
 
 set(handles.arritmiaDetectada, 'String', 'Arritmia sinusal');
 if(click)
@@ -836,7 +845,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         %disp(pos2(1));
@@ -862,6 +871,8 @@ function tablaTS_CellSelectionCallback(hObject, eventdata, handles)
 global click;
 global ecgs;
 global textoant;
+global ecgsamp;
+
 set(handles.arritmiaDetectada, 'String', 'Taquicardia sinusal');
 if(click)
     click = false;
@@ -872,7 +883,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -910,6 +921,7 @@ global VParregloAtFib;
 global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
+global ecgsamp;
 
 set(handles.arritmiaDetectada, 'String', 'Aleteo auricular');
 if(click)
@@ -921,7 +933,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -946,6 +958,7 @@ function tablaFA_CellSelectionCallback(hObject, eventdata, handles)
 global click;
 global ecgs;
 global textoant;
+global ecgsamp;
 set(handles.arritmiaDetectada, 'String', 'Fibrilación auricular');
 if(click)
     click = false;
@@ -956,7 +969,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -979,6 +992,7 @@ function tablaTV_CellSelectionCallback(hObject, eventdata, handles)
 global click;
 global ecgs;
 global textoant;
+global ecgsamp;
 set(handles.arritmiaDetectada, 'String', 'Taquicardia ventricular');
 if(click)
     click = false;
@@ -989,7 +1003,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -1012,6 +1026,7 @@ function tablaFV_CellSelectionCallback(hObject, eventdata, handles)
 global click;
 global ecgs;
 global textoant;
+global ecgsamp;
 set(handles.arritmiaDetectada, 'String', 'Fibrilación ventricular');
 if(click)
     click = false;
@@ -1022,7 +1037,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -1066,6 +1081,7 @@ global ecgs;
 global textoant;
 global Pindex;
 global mayor;
+global ecgsamp;
 if(click)
     click = false;
 else
@@ -1075,7 +1091,7 @@ else
     delete(textoant);
     if(y==2) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
@@ -1116,6 +1132,8 @@ function tablaOA_CellSelectionCallback(hObject, eventdata, handles)
 global click;
 global ecgs;
 global textoant;
+global ecgsamp;
+
 set(handles.arritmiaDetectada, 'String', 'Otra Arritmia');
 if(click)
     click = false;
@@ -1126,7 +1144,7 @@ else
     delete(textoant);
     if(y == 1 || y==2 || y == 3 || y==4 || y == 5 || y==6 || y == 7 || y==8 || y == 9 || y==10 || y == 11 || y==12 || y == 13 || y==14 || y == 15 || y==16 || y==17 || y==18) 
         xlim([celdaValor-1000 celdaValor+1000]);
-        pos2 = [celdaValor ecgs(celdaValor) 0];
+        pos2 = [celdaValor ecgsamp(celdaValor) 0];
         ecgplothandles = handles.ecgArritmias;
         hold on;
         textoant = text(pos2(1), pos2(2), '\Delta', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle', 'Parent', ecgplothandles);
