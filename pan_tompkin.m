@@ -5,7 +5,6 @@ anotacionRegistro = queries(numero - 1);
 anotacion = select(conexionBD, anotacionRegistro);
 assignin('base','anotacionRegistro',anotacionRegistro);
 ecg = val;
-ecg = ecg(:);
 
 ecg = ecg(:); % vectorizar
 
