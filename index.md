@@ -11,6 +11,7 @@ Figura en la que se compara un electrocardiograma de un corazón sano y un elect
 - MATLAB 2015 o superior
 - PC con procesador con Intel Core i3 o superior
 - MySQL 5.0 o superior
+- 8 gb de ram o superior
 
 ## Pasos para poder ejecutar el programa
 
