@@ -74,7 +74,7 @@ MApk=(1/round(0.055*fs))*ones(round(0.055*fs),1);
 MApecgs2=conv(ecgs2,MApk);
 
 %MApw=(1/round(0.05*fs))*ones(round(0.05*fs),1);
-MApw=(1/round(0.110*fs))*ones(round(0.110*fs),1);
+MApw=(1/round(0.11*fs))*ones(round(0.11*fs),1);
 MAwecgs2=conv(ecgs2,MApw);
 
 for n=1:length(ecgs2)
