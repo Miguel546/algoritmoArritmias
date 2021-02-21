@@ -786,7 +786,7 @@ global VParregloVTa;
 global VParregloVFl;
 global VPArregloOtraArritmia;
 global ecgsamp;
-set(handles.arritmiaDetectada, 'String', 'Bradicardia sinusal');v
+set(handles.arritmiaDetectada, 'String', 'Bradicardia sinusal');
 if(click)
     click = false;
 else

@@ -231,7 +231,8 @@ items = get(handles.menuPicoR,'String');
 seleccionarRegistro=get(handles.menuPicoR, 'value');
 registromit = items{seleccionarRegistro};
 
-fs = 360;
+%fs = 360;
+fs = 200;
 [ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion, locs, ecg_h, ecg_d, ecg_s, ecg_m, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = pan_tompkin(conexionBD, registromit, seleccionarRegistro, fs, 0);
 gr = 1;
 ecg=ecg/max(abs(ecg));
@@ -298,23 +299,7 @@ assignin('base','figura2',figura2);
 assignin('base','VParregloR',VParregloR);
 assignin('base','FParregloR',FParregloR);
 assignin('base','FNarregloR',FNarregloR);
-
-%Filtro pasa alta
-[BWb,BWa] = butter(5,[1.0].*2/fs,'high');
-%Aplicas
-data = filtfilt(BWb,BWa,ecg);
-%Filtro rechaza banda
-[b1,a1]=fir1(100,[59 61]*2/fs,'stop');
-%Aplicar a la senal anterior
-ecgd=filtfilt(b1,a1,data);
-%filtro pasabanda
-[b2,a2]=fir1(10,[5 10]*2/fs);
-%Graficar la figura 3
-ecgs=filtfilt(b2,a2,ecgd);
-
-%ecgs=ecgs/max(abs(ecgs));
-
-ecg = ecgs;
+ecg = ecg_h;
 axes(ecgPlotR);
 plot(ecg);title(strcat('Registro', 32,  registromit));xlabel('Tiempo(muestras)');ylabel('Amplitud(mV)');
 hold on,plot(Rindex,ecg(Rindex),'go');
