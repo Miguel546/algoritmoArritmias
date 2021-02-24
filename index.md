@@ -139,8 +139,8 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 | Bradicardia sinusal     | Regular   | < 55 lpm       | 1      | 120-200ms    | < 125 ms     |
 | Fibrilación auricular   | Irregular | cualquiera     | >=1    | No           | < 125 ms     |
 | Flutter atrial          | Regular   | cualquiera     | >=1    | No           | < 125 ms     |
-| Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | < 125 ms     |
-| Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | < 125 ms     |
+| Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | > 125 ms     |
+| Fibrilación ventricular | Irregular | >120 lpm       | No     | No           | > 125 ms     |
 
 Para poder ejecutar el programa ubicarse sobre el archivo **DetectorArritmias.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
 
