@@ -1,6 +1,5 @@
-clear;
-clc;
-close all;
+diary(sprintf('run_%s_%d.txt',datestr(now,'yyyy_mm_dd_HH_MM_SS'),randi([1,10000],1)))
+
 
 global conexionBD;
 global click;
@@ -25,123 +24,124 @@ javaclasspath('mysql-connector-java-5.1.47.jar');
 
 registrosmit = {'100m' '101m' '102m' '103m' '104m' '105m' '106m' '107m' '108m' '109m' '111m' '112m' '113m' '114m' '115m' '116m' '117m' '118m' '119m' '121m' '122m' '123m' '124m' '200m' '201m' '202m' '203m' '205m' '207m' '208m' '209m' '210m' '212m' '213m' '214m' '215m' '217m' '219m' '220m' '221m' '222m' '223m' '228m' '230m' '231m' '232m' '233m' '234m'};
 %registrosmit = {'100m' '101m' '102m'}
-filename = 'DeteccionArritmiasTotal_ConRINDEXDentroDePT.xlsx';
+filename = 'DeteccionArritmiasTotal_28022021.xlsx';
 A = {'Registro' 'Arritmia' 'Sensibilidad' 'Predictividad' 'Numero de latidos' 'VP' 'FP' 'FN' 'Detección fallida(latidos)' 'Detección fallida(%)'};
 xlswrite(filename,A);
 mapper = @(x,y) strcat(char(64 + x),num2str(y));
 for registro=1:length(registrosmit)
+    clearvars -except registro registrosmit conexionBD dbname username password driver dburl filename mapper;
     registromit = registrosmit{registro};
     disp(registromit);
 
-    querieAnotacion = ["SELECT * FROM mitarrythmiadatabase.anotacionesaux where registro = '" registromit "';"];
-    anotaciones = select(conexionBD, strjoin(querieAnotacion, ''));
+    %querieAnotacion = ["SELECT * FROM mitarrythmiadatabase.anotacionesaux where registro = '" registromit "';"];
+    %anotaciones = select(conexionBD, strjoin(querieAnotacion, ''));
 
     fs = 360;
     if(registromit == '100m')
-    numero = 2;
+    numeroArr = 2;
 elseif(registromit == '101m')
-    numero = 3;
+    numeroArr = 3;
 elseif(registromit == '102m')
-    numero = 4;
+    numeroArr = 4;
 elseif(registromit == '103m')
-    numero = 5;
+    numeroArr = 5;
 elseif(registromit == '104m')
-    numero = 6;
+    numeroArr = 6;
 elseif(registromit == '105m')
-    numero = 7;
+    numeroArr = 7;
 elseif(registromit == '106m')
-    numero = 8;
+    numeroArr = 8;
 elseif(registromit == '107m')
-    numero = 9;
+    numeroArr = 9;
 elseif(registromit == '108m')
-    numero = 10;
+    numeroArr = 10;
 elseif(registromit == '109m')
-    numero = 11;
+    numeroArr = 11;
 elseif(registromit == '111m') 
-    numero = 12;
+    numeroArr = 12;
 elseif(registromit == '112m') 
-    numero = 13;
+    numeroArr = 13;
 elseif(registromit == '113m') 
-    numero = 14;
+    numeroArr = 14;
 elseif(registromit == '114m') 
-    numero = 15;
+    numeroArr = 15;
 elseif(registromit == '115m') 
-    numero = 16;
+    numeroArr = 16;
 elseif(registromit == '116m')
-    numero = 17;
+    numeroArr = 17;
 elseif(registromit == '117m')
-    numero = 18;
+    numeroArr = 18;
 elseif(registromit == '118m')
-    numero = 19;
+    numeroArr = 19;
 elseif(registromit == '119m')
-    numero = 20;
+    numeroArr = 20;
 elseif(registromit == '121m') 
-    numero = 21;
+    numeroArr = 21;
 elseif(registromit == '122m')
-    numero = 22;
+    numeroArr = 22;
 elseif(registromit == '123m')
-    numero = 23;
+    numeroArr = 23;
 elseif(registromit == '124m')
-    numero = 24;
+    numeroArr = 24;
 elseif(registromit == '200m')
-    numero = 25;
+    numeroArr = 25;
 elseif(registromit == '201m')
-    numero = 26;
+    numeroArr = 26;
 elseif(registromit == '202m')
-    numero = 27;
+    numeroArr = 27;
 elseif(registromit == '203m')
-    numero = 28;
+    numeroArr = 28;
 elseif(registromit == '205m')
-    numero = 29;
+    numeroArr = 29;
 elseif(registromit == '207m')
-     numero = 30;
+     numeroArr = 30;
 elseif(registromit == '208m')
-    numero = 31;
+    numeroArr = 31;
 elseif(registromit == '209m')
-    numero = 32;
+    numeroArr = 32;
 elseif(registromit == '210m')
-    numero = 33;
+    numeroArr = 33;
 elseif(registromit == '212m')
-    numero = 34;
+    numeroArr = 34;
 elseif(registromit == '213m')
-    numero = 35;
+    numeroArr = 35;
 elseif(registromit == '214m')
-    numero = 36;
+    numeroArr = 36;
 elseif(registromit == '215m')
-    numero = 37;
+    numeroArr = 37;
 elseif(registromit == '217m')
-    numero = 38;
+    numeroArr = 38;
 elseif(registromit == '219m')
-    numero = 39;
+    numeroArr = 39;
 elseif(registromit == '220m')
-    numero = 40;
+    numeroArr = 40;
 elseif(registromit == '221m')
-    numero = 41;
+    numeroArr = 41;
 elseif(registromit == '222m')
-    numero = 42;
+    numeroArr = 42;
 elseif(registromit == '223m')
-    numero = 43;
+    numeroArr = 43;
 elseif(registromit == '228m')
-    numero = 44;
+    numeroArr = 44;
 elseif(registromit == '230m')
-    numero = 45;
+    numeroArr = 45;
 elseif(registromit == '231m')
-    numero = 46;
+    numeroArr = 46;
 elseif(registromit == '232m')
-    numero = 47;
+    numeroArr = 47;
 elseif(registromit == '233m')
-    numero = 48;
+    numeroArr = 48;
 elseif(registromit == '234m')
-    numero = 49;
+    numeroArr = 49;
 end
-[ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = pan_tompkin(conexionBD, registromit, numero, fs, 0);
-%[ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion, locs, ecg_h, ecg_d, ecg_s, ecg_m, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = pan_tompkin(conexionBD, registromit, numero, fs, 0);
+[ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = pan_tompkin(conexionBD, registromit, numeroArr, fs, 0);
+%[ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion, locs, ecg_h, ecg_d, ecg_s, ecg_m, qrs_i, qrs_c, NOISL_buf, SIGL_buf, THRS_buf, qrs_i_raw,qrs_amp_raw, NOISL_buf1, SIGL_buf1, THRS_buf1] = pan_tompkin(conexionBD, registromit, numeroArr, fs, 0);
 %Rindex = qrs_i_raw;
-[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, numero, ecg, fs, Rindex, Q_index, S_index, K_index,0);
-[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, numero, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
-%[ecgnormal, ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, numero, fs, 0);
-%[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, numero, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
-%[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, numero, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
+[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, numeroArr, ecg, fs, Rindex, Q_index, S_index, K_index,0);
+[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, numeroArr, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
+%[ecgnormal, ecg, Rindex, Q_index, QOn_index, S_index, K_index,  anotacion] = detectarPuntoR(conexionBD, registromit, numeroArr, fs, 0);
+%[ecgs2, Rindex2, Tindex, Pindex, P_ON_index, anotacionesP] = detectarOndasPT(conexionBD, registromit, numeroArr, ecgnormal, fs, Rindex, Q_index, S_index, K_index,0);
+%[NSyR, SyBr, AtFl, AtFib, VTa, VFl, OtraArritmia, Resultados]= detectarArritmias(conexionBD, registromit, numeroArr, ecgs2, fs, Rindex2, Pindex, P_ON_index, S_index, Q_index, QOn_index, Tindex, K_index);
 [conexionBD] = conexion(dbname, username, password, driver, dburl);
 querieAnotacion1 = ["SELECT * FROM mitarrythmiadatabase.anotaciones" registromit ";"];
 assignin('base','querieAnotacion1', strjoin(querieAnotacion1, ''));
@@ -154,7 +154,7 @@ arregloAnalizarVTa = [];
 arregloAnalizarSyBr = [];
 arregloAnalizarAtFl = [];
 arregloAnalizarOtraArritmia = [];
-arregloAux = unique(anotaciones(:,2));
+%arregloAux = unique(anotaciones(:,2));
 contAtFib = 1;
 contNSyR = 1;
 contVFl = 1;
@@ -163,40 +163,204 @@ contSyBr = 1;
 contAtFl = 1;
 contOtraArritmia = 1;
 
-    for y=1:size(anotaciones,1)
-        if(isequal(anotaciones{y,2}, {'(N'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+load('queriesArrAnotaciones');
+%anotacionRegistro = queries(numero - 1);
+%anotacion = select(conexionBD, anotacionRegistro);
+if(registromit == '100m')
+    numero = 1;
+elseif(registromit == '101m')
+    numero = 2;
+elseif(registromit == '102m')
+    numero = 3;
+elseif(registromit == '103m')
+    numero = 4;
+elseif(registromit == '104m')
+    numero = 5;
+elseif(registromit == '105m')
+    numero = 6;
+elseif(registromit == '106m')
+    numero = 7;
+elseif(registromit == '107m')
+    numero = 8;
+elseif(registromit == '108m')
+    numero = 9;
+elseif(registromit == '109m')
+    numero = 10;
+elseif(registromit == '111m') 
+    numero = 11;
+elseif(registromit == '112m') 
+    numero = 12;
+elseif(registromit == '113m') 
+    numero = 13;
+elseif(registromit == '114m') 
+    numero = 14;
+elseif(registromit == '115m') 
+    numero = 15;
+elseif(registromit == '116m')
+    numero = 16;
+elseif(registromit == '117m')
+    numero = 17;
+elseif(registromit == '118m')
+    numero = 18;
+elseif(registromit == '119m')
+    numero = 19;
+elseif(registromit == '121m') 
+    numero = 20;
+elseif(registromit == '122m')
+    numero = 21;
+elseif(registromit == '123m')
+    numero = 22;
+elseif(registromit == '124m')
+    numero = 23;
+elseif(registromit == '200m')
+    numero = 24;
+elseif(registromit == '201m')
+    numero = 25;
+elseif(registromit == '202m')
+    numero = 26;
+elseif(registromit == '203m')
+    numero = 27;
+elseif(registromit == '205m')
+    numero = 28;
+elseif(registromit == '207m')
+     numero = 29;
+elseif(registromit == '208m')
+    numero = 30;
+elseif(registromit == '209m')
+    numero = 31;
+elseif(registromit == '210m')
+    numero = 32;
+elseif(registromit == '212m')
+    numero = 33;
+elseif(registromit == '213m')
+    numero = 34;
+elseif(registromit == '214m')
+    numero = 35;
+elseif(registromit == '215m')
+    numero = 36;
+elseif(registromit == '217m')
+    numero = 37;
+elseif(registromit == '219m')
+    numero = 38;
+elseif(registromit == '220m')
+    numero = 39;
+elseif(registromit == '221m')
+    numero = 40;
+elseif(registromit == '222m')
+    numero = 41;
+elseif(registromit == '223m')
+    numero = 42;
+elseif(registromit == '228m')
+    numero = 43;
+elseif(registromit == '230m')
+    numero = 44;
+elseif(registromit == '231m')
+    numero = 45;
+elseif(registromit == '232m')
+    numero = 46;
+elseif(registromit == '233m')
+    numero = 47;
+elseif(registromit == '234m')
+    numero = 48;
+end
+querieAnotacion1 = queriesArr(numero);
+assignin('base','querieAnotacion1', strjoin(querieAnotacion1, ''));
+anotaciones2 = select(conexionBD, strjoin(querieAnotacion1, ''));
+assignin('base','anotaciones2', anotaciones2);
+arregloAnalizarNSyR = [];
+arregloAnalizarAtFib = [];
+arregloAnalizarVFl = [];
+arregloAnalizarVTa = [];
+arregloAnalizarSyBr = [];
+arregloAnalizarAtFl = [];
+arregloAnalizarOtraArritmia = [];
+
+%arregloAux = unique(anotaciones(:,2));
+contAtFib = 1;
+contNSyR = 1;
+contVFl = 1;
+contVTa = 1;
+contSyBr = 1;
+contAtFl = 1;
+contOtraArritmia = 1;
+
+for i = 1 : size(anotaciones2,1)
+    numero(i) = i;
+end
+numero = numero(:);
+
+anotaciones2.numero = numero;
+
+z = 0;
+
+for i = 1 : size(anotaciones2,1)
+    if(strlength(anotaciones2{i,7}))
+        z = z + 1;
+        anotacionesRitmo(z,1) = anotaciones2(i,1);
+        anotacionesRitmo(z,2) = anotaciones2(i,2);
+        anotacionesRitmo(z,3) = anotaciones2(i,3);
+        anotacionesRitmo(z,4) = anotaciones2(i,4);
+        anotacionesRitmo(z,5) = anotaciones2(i,5);
+        anotacionesRitmo(z,6) = anotaciones2(i,6);
+        anotacionesRitmo(z,7) = anotaciones2(i,7);
+        anotacionesRitmo(z,8) = anotaciones2(i,8);
+        anotacionesRitmo(z,9) = anotaciones2(i,9);
+    end
+end
+
+for i = 1 : size(anotacionesRitmo,1)
+    if i == size(anotacionesRitmo,1)
+        comienzo(i) = anotacionesRitmo{i,9} +1;
+        final(i) = size(anotaciones2,1);
+    else
+        comienzo(i) = anotacionesRitmo{i,9} +1;
+        final(i) = anotacionesRitmo{i+1,9} -1;
+    end
+end
+
+comienzo = comienzo(:);
+final = final(:);
+anotacionesRitmo.comienzo = comienzo;
+anotacionesRitmo.final = final;
+assignin('base','anotacionesRitmo', anotacionesRitmo);
+    for y=1:size(anotacionesRitmo,1)
+        if(isequal(anotacionesRitmo{y,7}, {'(N'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                %if(registromit == '106m')
+                %    disp(registromit);
+                %end
                 arregloAnalizarNSyR{contNSyR} = anotaciones2{z,2};
                 contNSyR = contNSyR + 1;
+                
             end
-        elseif(isequal(anotaciones{y,2}, {'(AFIB'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(AFIB'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarAtFib{contAtFib} = anotaciones2{z,2};
                 contAtFib = contAtFib + 1;
             end   
-        elseif(isequal(anotaciones{y,2}, {'(VFL'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(VFL'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarVFl{contVFl} = anotaciones2{z,2};
                 contVFl = contVFl + 1;
                 
             end
-        elseif(isequal(anotaciones{y,2}, {'(VT'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(VT'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarVTa{contVTa} = anotaciones2{z,2};
                 contVTa = contVTa + 1;
             end   
-        elseif(isequal(anotaciones{y,2}, {'(SBR'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(SBR'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarSyBr{contSyBr} = anotaciones2{z,2};
                 contSyBr = contSyBr + 1;
             end
-        elseif(isequal(anotaciones{y,2}, {'(AFL'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(AFL'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarAtFl{contAtFl} = anotaciones2{z,2};
                 contAtFl = contAtFl + 1;
             end
         else
-            for z=anotaciones{y,11}:anotaciones{y,12}
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarOtraArritmia{contOtraArritmia} = anotaciones2{z,2};
                 contOtraArritmia = contOtraArritmia + 1;
             end     
@@ -300,6 +464,9 @@ end
 data=xlsread(filename,'Hoja1', 'C:C');  % read the column of interest
 row=length(data)+1;
 xlswrite(filename,concatenar, 'Hoja1', mapper(1,(row+1)));
+
+%clear;
+%clc;
 end
 
 disp('Se analizo toda la base de datos de arritmias del MIT');

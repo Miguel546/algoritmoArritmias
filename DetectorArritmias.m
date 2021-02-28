@@ -494,7 +494,107 @@ set(handles.tablaFV,'data', []);
 set(handles.tablaOA,'data', []);
 
 [conexionBD] = conexion(dbname, username, password, driver, dburl);
-querieAnotacion1 = ["SELECT * FROM mitarrythmiadatabase.anotaciones" registromit ";"];
+load('queriesArrAnotaciones');
+%anotacionRegistro = queries(numero - 1);
+%anotacion = select(conexionBD, anotacionRegistro);
+if(registromit == '100m')
+    numero = 1;
+elseif(registromit == '101m')
+    numero = 2;
+elseif(registromit == '102m')
+    numero = 3;
+elseif(registromit == '103m')
+    numero = 4;
+elseif(registromit == '104m')
+    numero = 5;
+elseif(registromit == '105m')
+    numero = 6;
+elseif(registromit == '106m')
+    numero = 7;
+elseif(registromit == '107m')
+    numero = 8;
+elseif(registromit == '108m')
+    numero = 9;
+elseif(registromit == '109m')
+    numero = 10;
+elseif(registromit == '111m') 
+    numero = 11;
+elseif(registromit == '112m') 
+    numero = 12;
+elseif(registromit == '113m') 
+    numero = 13;
+elseif(registromit == '114m') 
+    numero = 14;
+elseif(registromit == '115m') 
+    numero = 15;
+elseif(registromit == '116m')
+    numero = 16;
+elseif(registromit == '117m')
+    numero = 17;
+elseif(registromit == '118m')
+    numero = 18;
+elseif(registromit == '119m')
+    numero = 19;
+elseif(registromit == '121m') 
+    numero = 20;
+elseif(registromit == '122m')
+    numero = 21;
+elseif(registromit == '123m')
+    numero = 22;
+elseif(registromit == '124m')
+    numero = 23;
+elseif(registromit == '200m')
+    numero = 24;
+elseif(registromit == '201m')
+    numero = 25;
+elseif(registromit == '202m')
+    numero = 26;
+elseif(registromit == '203m')
+    numero = 27;
+elseif(registromit == '205m')
+    numero = 28;
+elseif(registromit == '207m')
+     numero = 29;
+elseif(registromit == '208m')
+    numero = 30;
+elseif(registromit == '209m')
+    numero = 31;
+elseif(registromit == '210m')
+    numero = 32;
+elseif(registromit == '212m')
+    numero = 33;
+elseif(registromit == '213m')
+    numero = 34;
+elseif(registromit == '214m')
+    numero = 35;
+elseif(registromit == '215m')
+    numero = 36;
+elseif(registromit == '217m')
+    numero = 37;
+elseif(registromit == '219m')
+    numero = 38;
+elseif(registromit == '220m')
+    numero = 39;
+elseif(registromit == '221m')
+    numero = 40;
+elseif(registromit == '222m')
+    numero = 41;
+elseif(registromit == '223m')
+    numero = 42;
+elseif(registromit == '228m')
+    numero = 43;
+elseif(registromit == '230m')
+    numero = 44;
+elseif(registromit == '231m')
+    numero = 45;
+elseif(registromit == '232m')
+    numero = 46;
+elseif(registromit == '233m')
+    numero = 47;
+elseif(registromit == '234m')
+    numero = 48;
+end
+querieAnotacion1 = queriesArr(numero);
 assignin('base','querieAnotacion1', strjoin(querieAnotacion1, ''));
 anotaciones2 = select(conexionBD, strjoin(querieAnotacion1, ''));
 assignin('base','anotaciones2', anotaciones2);
@@ -514,40 +614,81 @@ contSyBr = 1;
 contAtFl = 1;
 contOtraArritmia = 1;
 
-    for y=1:size(anotaciones,1)
-        if(isequal(anotaciones{y,2}, {'(N'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+for i = 1 : size(anotaciones2,1)
+    numero(i) = i;
+end
+numero = numero(:);
+
+anotaciones2.numero = numero;
+
+z = 0;
+
+for i = 1 : size(anotaciones2,1)
+    if(strlength(anotaciones2{i,7}))
+        z = z + 1;
+        anotacionesRitmo(z,1) = anotaciones2(i,1);
+        anotacionesRitmo(z,2) = anotaciones2(i,2);
+        anotacionesRitmo(z,3) = anotaciones2(i,3);
+        anotacionesRitmo(z,4) = anotaciones2(i,4);
+        anotacionesRitmo(z,5) = anotaciones2(i,5);
+        anotacionesRitmo(z,6) = anotaciones2(i,6);
+        anotacionesRitmo(z,7) = anotaciones2(i,7);
+        anotacionesRitmo(z,8) = anotaciones2(i,8);
+        anotacionesRitmo(z,9) = anotaciones2(i,9);
+    end
+end
+
+for i = 1 : size(anotacionesRitmo,1)
+    if i == size(anotacionesRitmo,1)
+        comienzo(i) = anotacionesRitmo{i,9} +1;
+        final(i) = size(anotaciones2,1);
+    else
+        comienzo(i) = anotacionesRitmo{i,9} +1;
+        final(i) = anotacionesRitmo{i+1,9} -1;
+    end
+end
+
+comienzo = comienzo(:);
+final = final(:);
+anotacionesRitmo.comienzo = comienzo;
+anotacionesRitmo.final = final;
+assignin('base','anotacionesRitmo', anotacionesRitmo);
+    for y=1:size(anotacionesRitmo,1)
+        if(isequal(anotacionesRitmo{y,7}, {'(N'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                
                 arregloAnalizarNSyR{contNSyR} = anotaciones2{z,2};
                 contNSyR = contNSyR + 1;
+                
             end
-        elseif(isequal(anotaciones{y,2}, {'(AFIB'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(AFIB'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarAtFib{contAtFib} = anotaciones2{z,2};
                 contAtFib = contAtFib + 1;
             end   
-        elseif(isequal(anotaciones{y,2}, {'(VFL'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(VFL'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarVFl{contVFl} = anotaciones2{z,2};
                 contVFl = contVFl + 1;
                 
             end
-        elseif(isequal(anotaciones{y,2}, {'(VT'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(VT'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarVTa{contVTa} = anotaciones2{z,2};
                 contVTa = contVTa + 1;
             end   
-        elseif(isequal(anotaciones{y,2}, {'(SBR'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(SBR'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarSyBr{contSyBr} = anotaciones2{z,2};
                 contSyBr = contSyBr + 1;
             end
-        elseif(isequal(anotaciones{y,2}, {'(AFL'}))
-            for z=anotaciones{y,11}:anotaciones{y,12}
+        elseif(isequal(anotacionesRitmo{y,7}, {'(AFL'}))
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarAtFl{contAtFl} = anotaciones2{z,2};
                 contAtFl = contAtFl + 1;
             end
         else
-            for z=anotaciones{y,11}:anotaciones{y,12}
+            for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
                 arregloAnalizarOtraArritmia{contOtraArritmia} = anotaciones2{z,2};
                 contOtraArritmia = contOtraArritmia + 1;
             end     

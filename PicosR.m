@@ -340,13 +340,13 @@ hora = datestr(now,'HH:MM:SS');
 nuevahora = erase(hora, ':');
 fechahora = strcat(dia, '_', nuevahora);
 
-mkdir(strcat('picosR/',fechahora));
+%mkdir(strcat('picosR/',fechahora));
 
-copyfile('PicosR.fig', strcat('picosR/',fechahora, '/', 'PicosR.fig'));
-copyfile('PicosR.m', strcat('picosR/',fechahora, '/', 'PicosR.m'));
-copyfile('detectarPuntoR.m',strcat('picosR/',fechahora, '/', 'detectarPuntoR.m'));
+%copyfile('PicosR.fig', strcat('picosR/',fechahora, '/', 'PicosR.fig'));
+%copyfile('PicosR.m', strcat('picosR/',fechahora, '/', 'PicosR.m'));
+%copyfile('detectarPuntoR.m',strcat('picosR/',fechahora, '/', 'detectarPuntoR.m'));
 
-copyfile('queriesAnotaciones.mat', strcat('picosR/',fechahora, '/', 'queriesAnotaciones.mat'));
+%copyfile('queriesAnotaciones.mat', strcat('picosR/',fechahora, '/', 'queriesAnotaciones.mat'));
 
 querie = evalin('base', 'anotacionRegistro');
 nombresCol = {'registro','latidos','sensibilidad','predictividad','vp','fn','fp','errorsensibilidad','errorpredictividad','deteccionfallidalatidos','deteccionfallidaporc','tiempo', 'querie'};
