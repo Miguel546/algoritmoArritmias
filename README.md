@@ -21,7 +21,7 @@ En la consola de mysql ejecutar
 mysql> \. rutaProyecto\MitArrythmiaDatabase.sql
 ```
 
-Video - Base de datos de arritmias MySQL --> [https://www.youtube.com/watch?v=GYFVdQaUO4E]: https://www.youtube.com/watch?v=GYFVdQaUO4E 
+Video - Base de datos de arritmias MySQL --> https://www.youtube.com/watch?v=GYFVdQaUO4E 
 
 Después será capaz de ejecutar el programa de detección de arritmias, el de los picos R y el de los puntos P.
 
@@ -45,7 +45,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 ![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
 
-Video Pan Tompkins --> [https://www.youtube.com/watch?v=AkSHIWIy5X8]: https://www.youtube.com/watch?v=AkSHIWIy5X8
+Video Pan Tompkins --> https://www.youtube.com/watch?v=AkSHIWIy5X8
 
 **Tabla de resultados Pan Tompkins**
 
@@ -115,7 +115,7 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 
 ![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
 
-Video - Ondas P - Elgendi --> [https://www.youtube.com/watch?v=Jn7FqlnJGWw]: https://www.youtube.com/watch?v=Jn7FqlnJGWw
+Video - Ondas P - Elgendi --> https://www.youtube.com/watch?v=Jn7FqlnJGWw
 
 **Tabla de resultados Elgendi**
 
@@ -160,7 +160,7 @@ Después se abrirá el programa para detectar las arritmias. Selecciona un regis
 
 ![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
 
-Video - Programa para detectar arritmias --> [https://www.youtube.com/watch?v=d4xTK3QCPPQ]: https://www.youtube.com/watch?v=d4xTK3QCPPQ
+Video - Programa para detectar arritmias --> https://www.youtube.com/watch?v=d4xTK3QCPPQ
 
 **Tabla de resultados Arritmias**
 
