@@ -21,7 +21,7 @@ En la consola de mysql ejecutar
 mysql> \. rutaProyecto\MitArrythmiaDatabase.sql
 ```
 
-Video - Base de datos de arritmias MySQL --> (https://www.youtube.com/watch?v=GYFVdQaUO4E): https://www.youtube.com/watch?v=GYFVdQaUO4E 
+Video - Base de datos de arritmias MySQL --> [https://www.youtube.com/watch?v=GYFVdQaUO4E](https://www.youtube.com/watch?v=GYFVdQaUO4E) 
 
 Después será capaz de ejecutar el programa de detección de arritmias, el de los picos R y el de los puntos P.
 
