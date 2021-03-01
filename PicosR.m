@@ -299,6 +299,8 @@ assignin('base','VParregloR',VParregloR);
 assignin('base','FParregloR',FParregloR);
 assignin('base','FNarregloR',FNarregloR);
 
+assignin('base','Rindex',Rindex);
+
 %Filtro pasa alta
 [BWb,BWa] = butter(5,[1.0].*2/fs,'high');
 %Aplicas

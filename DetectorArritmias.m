@@ -437,6 +437,7 @@ set(handles.tablaTV,'ColumnName',columnasArritmias);
 set(handles.tablaFV,'ColumnName',columnasArritmias);
 set(handles.tablaOA,'ColumnName',columnasArritmias);
 arritmiasAlgoritmo = [];
+latidosAlgoritmo = [];
 arregloAnalizarNSyR = [];
 picosNSyR = [];
 VPNSyR = [];
@@ -707,6 +708,7 @@ arregloAnalizarOtraArritmia = arregloAnalizarOtraArritmia(:);
 if(~isempty(NSyR))
     [matrizNSyR, VPNSyR, FPNSyR, FNNSyR, SensiNSyR, PredpNSyR, VParregloNSyR, FParregloNSyR, FNarregloNSyR]=sensiPredAlgoritmos(NSyR(:,2), NSyR(:,3), NSyR(:,4), NSyR(:,5), NSyR(:,6), NSyR(:,7), cell2mat(arregloAnalizarNSyR), '(N');
     set(handles.tablaRSN, 'data', VParregloNSyR);
+    latidosAlgoritmo = [latidosAlgoritmo; "(N" "Ritmo Sinusal Normal" size(NSyR,1)];
     if(~isempty(SensiNSyR) && ~isnan(SensiNSyR))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Ritmo Sinusal Normal" SensiNSyR PredpNSyR size(arregloAnalizarNSyR,1) VPNSyR FPNSyR FNNSyR (FPNSyR + FNNSyR) ((FPNSyR + FNNSyR) * 100/size(arregloAnalizarNSyR,1))];
     end
@@ -714,6 +716,7 @@ end
 if(~isempty(SyBr))
     [matrizSyBr, VPSyBr, FPSyBr, FNSyBr, SensiSyBr, PredpSyBr, VParregloSyBr, FParregloSyBr, FNarregloSyBr]=sensiPredAlgoritmos(SyBr(:,2), SyBr(:,3), SyBr(:,4), SyBr(:,5), SyBr(:,6), SyBr(:,7),cell2mat(arregloAnalizarSyBr), '(SBR');
     set(handles.tablaBS, 'data', VParregloSyBr);
+    latidosAlgoritmo = [latidosAlgoritmo; "(SBR" "Bradicardia Sinusal" size(SyBr,1)];
     if(~isempty(SensiSyBr) && ~isnan(SensiSyBr))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Bradicardia Sinusal" SensiSyBr PredpSyBr size(arregloAnalizarSyBr,1) VPSyBr FPSyBr FNSyBr (FPSyBr + FNSyBr) ((FPSyBr + FNSyBr) * 100/size(arregloAnalizarSyBr,1))];
     end
@@ -721,6 +724,7 @@ end
 if(~isempty(AtFl))
     [matrizAtFl, VPAtFl, FPAtFl, FNAtFl, SensiAtFl, PredpAtFl, VParregloAtFl, FParregloAtFl, FNarregloAtFl]=sensiPredAlgoritmos(AtFl(:,2), AtFl(:,3), AtFl(:,4), AtFl(:,5), AtFl(:,6), AtFl(:,7),cell2mat(arregloAnalizarAtFl), '(AFL'); 
     set(handles.tablaAA, 'data', VParregloAtFl);
+    latidosAlgoritmo = [latidosAlgoritmo; "(AFL" "Aleteo Auricular" size(AtFl,1)];
     if(~isempty(SensiAtFl) && ~isnan(SensiAtFl))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Aleteo Auricular" SensiAtFl PredpAtFl size(arregloAnalizarAtFl,1) VPAtFl FPAtFl FNAtFl (FPAtFl + FNAtFl) ((FPAtFl + FNAtFl) * 100/size(arregloAnalizarAtFl,1))];
     end
@@ -728,6 +732,7 @@ end
 if(~isempty(AtFib))
    [matrizAtFib, VPAtFib, FPAtFib, FNAtFib, SensiAtFib, PredpAtFib, VParregloAtFib, FParregloAtFib, FNarregloAtFib]=sensiPredAlgoritmos(AtFib(:,2), AtFib(:,3), AtFib(:,4), AtFib(:,5), AtFib(:,6), AtFib(:,7),cell2mat(arregloAnalizarAtFib), '(AFIB');
     set(handles.tablaFA, 'data', VParregloAtFib);
+    latidosAlgoritmo = [latidosAlgoritmo; "(AFIB" "Fibrilacion Auricular" size(AtFib,1)];
     if(~isempty(SensiAtFib) && ~isnan(SensiAtFib))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Fibrilacion Auricular" SensiAtFib PredpAtFib size(arregloAnalizarAtFib,1) VPAtFib FPAtFib FNAtFib (FPAtFib + FNAtFib) ((FPAtFib + FNAtFib) * 100/size(arregloAnalizarAtFib,1))];
     end
@@ -735,6 +740,7 @@ end
 if(~isempty(VTa))
     [matrizVTa, VPVTa, FPVTa, FNVTa, SensiVTa, PredpVTa, VParregloVTa, FParregloVTa, FNarregloVTa]=sensiPredAlgoritmos(VTa(:,2), VTa(:,3), VTa(:,4), VTa(:,5), VTa(:,6), VTa(:,7), cell2mat(arregloAnalizarVTa), '(VT');
     set(handles.tablaTV, 'data', VParregloVTa);
+    latidosAlgoritmo = [latidosAlgoritmo; "(VT" "Taquicardia ventricular" size(VTa,1)];
     if(~isempty(SensiVTa) && ~isnan(SensiVTa))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Taquicardia ventricular" SensiVTa PredpVTa size(arregloAnalizarVTa,1) VPVTa FPVTa FNVTa (FPVTa + FNVTa) ((FPVTa + FNVTa) * 100/size(arregloAnalizarVTa,1))];
     end
@@ -742,6 +748,7 @@ end
 if(~isempty(VFl))
     [matrizVFl, VPVFl, FPVFl, FNVFl, SensiVFl, PredpVFl, VParregloVFl, FParregloVFl, FNarregloVFl]=sensiPredAlgoritmos(VFl(:,2), VFl(:,3), VFl(:,4), VFl(:,5), VFl(:,6), VFl(:,7), cell2mat(arregloAnalizarVFl), '(VFL');
     set(handles.tablaFV, 'data', VParregloVFl);
+    latidosAlgoritmo = [latidosAlgoritmo; "(VFL" "Flutter ventricular" size(VFl,1)];
     if(~isempty(SensiVFl) && ~isnan(SensiVFl))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Flutter ventricular" SensiVFl PredpVFl size(arregloAnalizarVFl,1) VPVFl FPVFl FNVFl (FPVFl + FNVFl) ((FPVFl + FNVFl) * 100/size(arregloAnalizarVFl,1))];
     end
@@ -750,6 +757,7 @@ end
 if(~isempty(OtraArritmia))
     [matrizOtraArritmia, VPOtraArritmia, FPOtraArritmia, FNOtraArritmia, SensiOtraArritmia, PredpOtraArritmia, VParregloOtraArritmia, FParregloOtraArritmia, FNarregloOtraArritmia]=sensiPredAlgoritmos(OtraArritmia(:,2), OtraArritmia(:,3), OtraArritmia(:,4), OtraArritmia(:,5), OtraArritmia(:,6), OtraArritmia(:,7), cell2mat(arregloAnalizarOtraArritmia), '(OARR');
     set(handles.tablaOA, 'data', VParregloOtraArritmia);
+    latidosAlgoritmo = [latidosAlgoritmo; "(OARR" "Otra Arritmia" size(OtraArritmia,1)];
     if(~isempty(SensiOtraArritmia) && ~isnan(SensiOtraArritmia))
         arritmiasAlgoritmo = [arritmiasAlgoritmo; registromit "Otra Arritmia" SensiOtraArritmia PredpOtraArritmia size(arregloAnalizarOtraArritmia,1) VPOtraArritmia FPOtraArritmia FNOtraArritmia (FPOtraArritmia + FNOtraArritmia) ((FPOtraArritmia + FNOtraArritmia) * 100/size(arregloAnalizarOtraArritmia,1))];
     end
@@ -762,7 +770,7 @@ assignin('base','arregloAnalizarVTa', arregloAnalizarVTa);
 assignin('base','arregloAnalizarSyBr', arregloAnalizarSyBr);
 assignin('base','arregloAnalizarAtFl', arregloAnalizarAtFl);
 assignin('base','arregloAnalizarOtraArritmia', arregloAnalizarOtraArritmia);
-
+assignin('base','latidosAlgoritmo', latidosAlgoritmo);
 assignin('base', 'ecgs', ecgs2);
 assignin('base', 'VParregloNSyR', VParregloNSyR);
 assignin('base', 'FParregloNSyR',  FParregloNSyR);
