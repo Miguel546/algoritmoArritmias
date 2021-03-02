@@ -1176,7 +1176,7 @@ global click;
 global ecgs;
 global textoant;
 global ecgsamp;
-set(handles.arritmiaDetectada, 'String', 'Fibrilación ventricular');
+set(handles.arritmiaDetectada, 'String', 'Flutter ventricular');
 if(click)
     click = false;
 else
