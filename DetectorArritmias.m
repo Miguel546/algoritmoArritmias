@@ -166,7 +166,7 @@ global textoactual;
 global textoant;
 global ecg;
 global ecgs;
-global ecgs2;
+
 global PicoR;
 global ecgsamp;
 count = count + 1;
@@ -614,6 +614,7 @@ contVTa = 1;
 contSyBr = 1;
 contAtFl = 1;
 contOtraArritmia = 1;
+contArritmia = 1;
 
 for i = 1 : size(anotaciones2,1)
     numero(i) = i;
@@ -657,45 +658,71 @@ assignin('base','anotacionesRitmo', anotacionesRitmo);
     for y=1:size(anotacionesRitmo,1)
         if(isequal(anotacionesRitmo{y,7}, {'(N'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
-                
+                %for o=1:size(Resultados,1)
+                %    if(Resultados{o,1} >= anotaciones2{z,2} - 20 && Resultados{o,1} <= anotaciones2{z,2} + 20)
+                %        Resultados{i,8} = {'(N'};
+                %    end
+                %end
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(N'};
                 arregloAnalizarNSyR{contNSyR} = anotaciones2{z,2};
                 contNSyR = contNSyR + 1;
+                contArritmia = contArritmia + 1;
                 
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(AFIB'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(AFIB'};
                 arregloAnalizarAtFib{contAtFib} = anotaciones2{z,2};
                 contAtFib = contAtFib + 1;
+                contArritmia = contArritmia + 1;
             end   
         elseif(isequal(anotacionesRitmo{y,7}, {'(VFL'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(VFL'};
                 arregloAnalizarVFl{contVFl} = anotaciones2{z,2};
                 contVFl = contVFl + 1;
+                contArritmia = contArritmia + 1;
                 
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(VT'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(VT'};
                 arregloAnalizarVTa{contVTa} = anotaciones2{z,2};
                 contVTa = contVTa + 1;
+                contArritmia = contArritmia + 1;
             end   
         elseif(isequal(anotacionesRitmo{y,7}, {'(SBR'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(SBR'};
                 arregloAnalizarSyBr{contSyBr} = anotaciones2{z,2};
                 contSyBr = contSyBr + 1;
+                contArritmia = contArritmia + 1;
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(AFL'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(AFL'};
                 arregloAnalizarAtFl{contAtFl} = anotaciones2{z,2};
                 contAtFl = contAtFl + 1;
+                contArritmia = contArritmia + 1;
             end
         else
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(OARR'};
                 arregloAnalizarOtraArritmia{contOtraArritmia} = anotaciones2{z,2};
                 contOtraArritmia = contOtraArritmia + 1;
+                contArritmia = contArritmia + 1;
             end     
         end
     end
 
+%arritmiasAnotaciones = arritmiasAnotaciones(:);
 arregloAnalizarNSyR = arregloAnalizarNSyR(:);
 arregloAnalizarAtFib = arregloAnalizarAtFib(:);
 arregloAnalizarVFl = arregloAnalizarVFl(:);
@@ -704,6 +731,18 @@ arregloAnalizarSyBr = arregloAnalizarSyBr(:);
 arregloAnalizarAtFl = arregloAnalizarAtFl(:);
 arregloAnalizarOtraArritmia = arregloAnalizarOtraArritmia(:);
 
+
+for i=1:size(Resultados,1)
+    for j=1:size(arritmiasAnotaciones,1)
+        if(Resultados{i,2} >= arritmiasAnotaciones{j,1} -20 && Resultados{i,2} <= arritmiasAnotaciones{j,1} +20)
+            Resultados{i,9} = arritmiasAnotaciones{j,1};
+            Resultados{i,10} = arritmiasAnotaciones{j,2};
+        end
+    end
+end
+
+header = {'Registro mit', 'Latido algoritmo','PRms','QRSms', 'Frecuencia cardiaca', 'Onda P', 'Desviacion', 'Arritmia Algoritmo', 'Anotacion Latido', 'Arritmia Anotacion'};
+Resultados = [header; Resultados];
 
 if(~isempty(NSyR))
     [matrizNSyR, VPNSyR, FPNSyR, FNNSyR, SensiNSyR, PredpNSyR, VParregloNSyR, FParregloNSyR, FNarregloNSyR]=sensiPredAlgoritmos(NSyR(:,2), NSyR(:,3), NSyR(:,4), NSyR(:,5), NSyR(:,6), NSyR(:,7), cell2mat(arregloAnalizarNSyR), '(N');
@@ -763,6 +802,7 @@ if(~isempty(OtraArritmia))
     end
 end
 
+assignin('base','arritmiasAnotaciones', arritmiasAnotaciones);
 assignin('base','arregloAnalizarNSyR', arregloAnalizarNSyR);
 assignin('base','arregloAnalizarAtFib', arregloAnalizarAtFib);
 assignin('base','arregloAnalizarVFl', arregloAnalizarVFl);
@@ -794,7 +834,7 @@ assignin('base', 'VPArregloOtraArritmia', VParregloOtraArritmia);
 assignin('base', 'FPArregloOtraArritmia', FParregloOtraArritmia);
 assignin('base', 'FNArregloOtraArritmia', FNarregloOtraArritmia);
 
-
+assignin('base', 'Resultados', Resultados);
 
 assignin('base','picosNSyR', picosNSyR);
 set(handles.tablaAlgoritmo,'ColumnName', ["Registro" "Arritmia" "Sensibilidad" "Predictividad" "Total Latidos" "VP" "FP" "FN" "Deteccion fallida(latidos)" "Deteccion fallida (%)"]);
