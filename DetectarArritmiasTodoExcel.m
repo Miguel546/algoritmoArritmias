@@ -23,13 +23,17 @@ javaclasspath('mysql-connector-java-5.1.47.jar');
 [conexionBD] = conexion(dbname, username, password, driver, dburl); 
 
 registrosmit = {'100m' '101m' '102m' '103m' '104m' '105m' '106m' '107m' '108m' '109m' '111m' '112m' '113m' '114m' '115m' '116m' '117m' '118m' '119m' '121m' '122m' '123m' '124m' '200m' '201m' '202m' '203m' '205m' '207m' '208m' '209m' '210m' '212m' '213m' '214m' '215m' '217m' '219m' '220m' '221m' '222m' '223m' '228m' '230m' '231m' '232m' '233m' '234m'};
-%registrosmit = {'100m' '101m' '102m'}
-filename = 'DeteccionArritmiasTotal_28022021.xlsx';
+%registrosmit = {'100m' '101m' '102m'};
+filename = 'DeteccionArritmiasTotal.xlsx';
 A = {'Registro' 'Arritmia' 'Sensibilidad' 'Predictividad' 'Numero de latidos' 'VP' 'FP' 'FN' 'Detección fallida(latidos)' 'Detección fallida(%)'};
 xlswrite(filename,A);
 mapper = @(x,y) strcat(char(64 + x),num2str(y));
+
+contArritmiaTotal = 1;
+contAnotaciones = 1;
 for registro=1:length(registrosmit)
-    clearvars -except registro registrosmit conexionBD dbname username password driver dburl filename mapper;
+    clearvars -except registro registrosmit conexionBD dbname username password driver dburl filename mapper ResultadosTotal contArritmiaTotal contAnotaciones AnotacionesTotal;
+    contArritmia = 1;
     registromit = registrosmit{registro};
     disp(registromit);
 
@@ -326,43 +330,68 @@ assignin('base','anotacionesRitmo', anotacionesRitmo);
     for y=1:size(anotacionesRitmo,1)
         if(isequal(anotacionesRitmo{y,7}, {'(N'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
-                %if(registromit == '106m')
-                %    disp(registromit);
-                %end
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(N'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarNSyR{contNSyR} = anotaciones2{z,2};
                 contNSyR = contNSyR + 1;
+                contArritmia = contArritmia + 1;
                 
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(AFIB'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(AFIB'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarAtFib{contAtFib} = anotaciones2{z,2};
                 contAtFib = contAtFib + 1;
+                contArritmia = contArritmia + 1;
             end   
         elseif(isequal(anotacionesRitmo{y,7}, {'(VFL'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(VFL'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarVFl{contVFl} = anotaciones2{z,2};
                 contVFl = contVFl + 1;
+                contArritmia = contArritmia + 1;
                 
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(VT'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(VT'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarVTa{contVTa} = anotaciones2{z,2};
                 contVTa = contVTa + 1;
+                contArritmia = contArritmia + 1;
             end   
         elseif(isequal(anotacionesRitmo{y,7}, {'(SBR'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(SBR'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarSyBr{contSyBr} = anotaciones2{z,2};
                 contSyBr = contSyBr + 1;
+                contArritmia = contArritmia + 1;
             end
         elseif(isequal(anotacionesRitmo{y,7}, {'(AFL'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(AFL'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarAtFl{contAtFl} = anotaciones2{z,2};
                 contAtFl = contAtFl + 1;
+                contArritmia = contArritmia + 1;
             end
         else
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
+                arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
+                arritmiasAnotaciones{contArritmia, 2} = {'(OARR'};
+                arritmiasAnotaciones{contArritmia, 3} = registromit;
                 arregloAnalizarOtraArritmia{contOtraArritmia} = anotaciones2{z,2};
                 contOtraArritmia = contOtraArritmia + 1;
+                contArritmia = contArritmia + 1;
             end     
         end
     end
@@ -375,6 +404,38 @@ arregloAnalizarSyBr = arregloAnalizarSyBr(:);
 arregloAnalizarAtFl = arregloAnalizarAtFl(:);
 arregloAnalizarOtraArritmia = arregloAnalizarOtraArritmia(:);
 arritmiasAlgoritmo = [];
+
+for i=1:size(Resultados,1)
+    for j=1:size(arritmiasAnotaciones,1)
+        if(Resultados{i,2} >= arritmiasAnotaciones{j,1} -20 && Resultados{i,2} <= arritmiasAnotaciones{j,1} +20)
+            Resultados{i,9} = arritmiasAnotaciones{j,1};
+            Resultados{i,10} = arritmiasAnotaciones{j,2};
+        end
+    end
+end
+
+for i=1:size(Resultados,1)
+    ResultadosTotal{contArritmiaTotal,1} = Resultados{i,1};
+    ResultadosTotal{contArritmiaTotal,2} = Resultados{i,2};
+    ResultadosTotal{contArritmiaTotal,3} = Resultados{i,3};
+    ResultadosTotal{contArritmiaTotal,4} = Resultados{i,4};
+    ResultadosTotal{contArritmiaTotal,5} = Resultados{i,5};
+    ResultadosTotal{contArritmiaTotal,6} = Resultados{i,6};
+    ResultadosTotal{contArritmiaTotal,7} = Resultados{i,7};
+    ResultadosTotal{contArritmiaTotal,8} = Resultados{i,8};
+    ResultadosTotal{contArritmiaTotal,9} = Resultados{i,9};
+    ResultadosTotal{contArritmiaTotal,10} = Resultados{i,10};
+    contArritmiaTotal = contArritmiaTotal + 1;
+end
+
+for i=1:size(arritmiasAnotaciones,1)
+    AnotacionesTotal{contAnotaciones, 1} = arritmiasAnotaciones{i,1};
+    AnotacionesTotal{contAnotaciones, 2} = arritmiasAnotaciones{i,2};
+    AnotacionesTotal{contAnotaciones, 3} = arritmiasAnotaciones{i,3};
+    contAnotaciones = contAnotaciones + 1;
+end
+
+
 if(~isempty(NSyR))
     [matrizNSyR, VPNSyR, FPNSyR, FNNSyR, SensiNSyR, PredpNSyR, VParregloNSyR, FParregloNSyR, FNarregloNSyR]=sensiPredAlgoritmos(NSyR(:,2), NSyR(:,3), NSyR(:,4), NSyR(:,5), NSyR(:,6), NSyR(:,7), cell2mat(arregloAnalizarNSyR), '(N');
     
@@ -468,5 +529,14 @@ xlswrite(filename,concatenar, 'Hoja1', mapper(1,(row+1)));
 %clear;
 %clc;
 end
+
+header = {'Registro mit', 'Latido algoritmo','PRms','QRSms', 'Frecuencia cardiaca', 'Onda P', 'Desviacion', 'Arritmia Algoritmo', 'Anotacion Latido', 'Arritmia Anotacion'};
+ResultadosTotal = [header; ResultadosTotal];
+
+header2 = {'Anotacion Latido', 'Anotacion Arritmia','Registro'};
+AnotacionesTotal = [header2; AnotacionesTotal];
+
+save('ResultadosTotal.mat','ResultadosTotal')
+save('AnotacionesTotal.mat','AnotacionesTotal')
 
 disp('Se analizo toda la base de datos de arritmias del MIT');

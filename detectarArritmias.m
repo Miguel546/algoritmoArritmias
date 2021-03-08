@@ -46,6 +46,9 @@ for i = 1 : length(Rindex)
         end
         
         PR=QOn_index(i)-PIN;
+        if(PIN == 0)
+            PR = 0;
+        end
         PRms=(PR/fs)*1000;
         
         %El ancho del QRS en muestras
@@ -71,6 +74,9 @@ for i = 1 : length(Rindex)
         cuantasOndasP(i, 1) = i;
         cuantasOndasP(i, 2) = contP;
         PR=QOn_index(i)-PIN;
+        if(PIN == 0)
+            PR = 0;
+        end
         PRms=(PR/360)*1000;
         
         if(cuantasOndasP(i, 2) >= 1)
@@ -271,10 +277,10 @@ for i = 1 : length(Rindex)
             contP = 0;                  
             for y=1:length(Pindex)
                 if (Pindex(y)<Rindex(i)&&Pindex(y)>Rindex(i-1))
-                    
                     contP = contP + 1;
                     PIN=P_ON_index(y);
                 end
+                
             end
             cuantasOndasP(i, 1) = i;
             cuantasOndasP(i, 2) = contP;
@@ -285,6 +291,9 @@ for i = 1 : length(Rindex)
             hayondaP=0;
         end
         PR=QOn_index(i)-PIN;
+        if(PIN == 0)
+            PR = 0;
+        end
         PRms=(PR/360)*1000;
         
         %El ancho del QRS en muestras

@@ -658,11 +658,6 @@ assignin('base','anotacionesRitmo', anotacionesRitmo);
     for y=1:size(anotacionesRitmo,1)
         if(isequal(anotacionesRitmo{y,7}, {'(N'}))
             for z=anotacionesRitmo{y,10}:anotacionesRitmo{y,11}
-                %for o=1:size(Resultados,1)
-                %    if(Resultados{o,1} >= anotaciones2{z,2} - 20 && Resultados{o,1} <= anotaciones2{z,2} + 20)
-                %        Resultados{i,8} = {'(N'};
-                %    end
-                %end
                 arritmiasAnotaciones{contArritmia, 1} = anotaciones2{z,2};
                 arritmiasAnotaciones{contArritmia, 2} = {'(N'};
                 arregloAnalizarNSyR{contNSyR} = anotaciones2{z,2};
