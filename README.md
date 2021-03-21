@@ -47,7 +47,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 Video Pan Tompkins --> https://www.youtube.com/watch?v=AkSHIWIy5X8
 
-**Tabla de resultados Pan Tompkins**
+## **Tabla de resultados Pan Tompkins**
 
 | registromit  | Numero de latidos | VPR    | FPR | FNR  | Sensibilidad | Predictividad |
 |--------------|-------------------|--------|-----|------|--------------|---------------|
@@ -117,7 +117,7 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 
 Video - Ondas P - Elgendi --> https://www.youtube.com/watch?v=Jn7FqlnJGWw
 
-**Tabla de resultados Elgendi**
+## **Tabla de resultados Elgendi**
 
 | # registro   |  latidos |  sensibilidad |  predictividad |  vp   |  fn  |  fp  |
 |--------------|----------|---------------|----------------|-------|------|------|
@@ -162,7 +162,7 @@ Después se abrirá el programa para detectar las arritmias. Selecciona un regis
 
 Video - Programa para detectar arritmias --> https://www.youtube.com/watch?v=d4xTK3QCPPQ
 
-**Tabla de resultados Arritmias**
+## **Tabla de resultados Arritmias**
 
 | Registro      | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
 |---------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
