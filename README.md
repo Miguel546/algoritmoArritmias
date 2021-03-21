@@ -49,7 +49,7 @@ Video Pan Tompkins --> https://www.youtube.com/watch?v=AkSHIWIy5X8
 
 ## **Tabla de resultados Pan Tompkins**
 
-| registromit  | Numero de latidos | VPR    | FPR | FNR  | Sensibilidad | Predictividad |
+| Registro Mit  | Numero de latidos | VP    | FP | FN  | Sensibilidad | Predictividad |
 |--------------|-------------------|--------|-----|------|--------------|---------------|
 | 100m         | 2273              | 2273   | 0   | 0    | 100          | 100           |
 | 101m         | 1863              | 1862   | 6   | 1    | 99.94632313  | 99.67880086   |
