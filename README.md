@@ -164,104 +164,105 @@ Video - Programa para detectar arritmias --> https://www.youtube.com/watch?v=d4x
 
 ## **Tabla de resultados Arritmias**
 
-| Registro      | Arritmia                | Sensibilidad | Predictividad | Numero de latidos | VP    | FP    | FN    |
-|---------------|-------------------------|--------------|---------------|-------------------|-------|-------|-------|
-| 100m          | Ritmo Sinusal Normal    | 69.1157      | 100           | 2273              | 1571  | 0     | 702   |
-| 101m          | Ritmo Sinusal Normal    | 96.0816      | 100           | 1863              | 1790  | 0     | 73    |
-| 102m          | Ritmo Sinusal Normal    | 64.7059      | 46.8085       | 102               | 66    | 75    | 36    |
-| 102m          | Otra Arritmia           | 54.6763      | 95.8789       | 2085              | 1140  | 49    | 945   |
-| 103m          | Ritmo Sinusal Normal    | 73.5125      | 100           | 2084              | 1532  | 0     | 552   |
-| 104m          | Ritmo Sinusal Normal    | 17.9931      | 36.1111       | 289               | 52    | 92    | 237   |
-| 104m          | Otra Arritmia           | 33.7629      | 81.875        | 1940              | 655   | 145   | 1285  |
-| 105m          | Ritmo Sinusal Normal    | 11.8585      | 99.6732       | 2572              | 305   | 1     | 2267  |
-| 106m          | Ritmo Sinusal Normal    | 49.9663      | 99.8652       | 1483              | 741   | 1     | 742   |
-| 106m          | Taquicardia ventricular | 0            | 0             | 3                 | 0     | 5     | 3     |
-| 106m          | Otra Arritmia           | 54.8983      | 48.2927       | 541               | 297   | 318   | 244   |
-| 107m          | Otra Arritmia           | 95.5077      | 99.8044       | 2137              | 2041  | 4     | 96    |
-| 108m          | Ritmo Sinusal Normal    | 16.5247      | 99.6575       | 1761              | 291   | 1     | 1470  |
-| 109m          | Ritmo Sinusal Normal    | 3.4755       | 100           | 2532              | 88    | 0     | 2444  |
-| 111m          | Ritmo Sinusal Normal    | 1.1776       | 96.1538       | 2123              | 25    | 1     | 2098  |
-| 112m          | Ritmo Sinusal Normal    | 25.7582      | 100           | 2539              | 654   | 0     | 1885  |
-| 113m          | Ritmo Sinusal Normal    | 73.7283      | 99.8486       | 1789              | 1319  | 2     | 470   |
-| 114m          | Ritmo Sinusal Normal    | 15.8654      | 100           | 1872              | 297   | 0     | 1575  |
-| 114m          | Otra Arritmia           | 57.1429      | 0.27952       | 7                 | 4     | 1427  | 3     |
-| 115m          | Ritmo Sinusal Normal    | 84.895       | 100           | 1953              | 1658  | 0     | 295   |
-| 116m          | Ritmo Sinusal Normal    | 56.7993      | 100           | 2412              | 1370  | 0     | 1042  |
-| 117m          | Ritmo Sinusal Normal    | 0.78176      | 100           | 1535              | 12    | 0     | 1523  |
-| 118m          | Ritmo Sinusal Normal    | 35.1363      | 100           | 2274              | 799   | 0     | 1475  |
-| 119m          | Ritmo Sinusal Normal    | 63.7517      | 92.8988       | 1498              | 955   | 73    | 543   |
-| 119m          | Otra Arritmia           | 42.5358      | 50.6083       | 489               | 208   | 203   | 281   |
-| 121m          | Ritmo Sinusal Normal    | 21.8465      | 100           | 1863              | 407   | 0     | 1456  |
-| 122m          | Ritmo Sinusal Normal    | 99.273       | 100           | 2476              | 2458  | 0     | 18    |
-| 123m          | Ritmo Sinusal Normal    | 6.2582       | 100           | 1518              | 95    | 0     | 1423  |
-| 124m          | Ritmo Sinusal Normal    | 11.9296      | 94.3299       | 1534              | 183   | 11    | 1351  |
-| 124m          | Otra Arritmia           | 61.1765      | 8.7395        | 85                | 52    | 543   | 33    |
-| 200m          | Ritmo Sinusal Normal    | 27.4678      | 94.1176       | 1398              | 384   | 24    | 1014  |
-| 200m          | Taquicardia ventricular | 21.7391      | 1.3441        | 23                | 5     | 367   | 18    |
-| 200m          | Otra Arritmia           | 29.8305      | 75.5365       | 1180              | 352   | 114   | 828   |
-| 201m          | Ritmo Sinusal Normal    | 4.0639       | 15.6425       | 689               | 28    | 151   | 661   |
-| 201m          | Fibrilacion Auricular   | 14.27        | 39.039        | 911               | 130   | 203   | 781   |
-| 201m          | Otra Arritmia           | 50.9695      | 28.2642       | 361               | 184   | 467   | 177   |
-| 202m          | Ritmo Sinusal Normal    | 11.8132      | 65.8163       | 1092              | 129   | 67    | 963   |
-| 202m          | Aleteo Auricular        | 75.9615      | 33.9056       | 104               | 79    | 154   | 25    |
-| 202m          | Fibrilacion Auricular   | 9.1489       | 68.8          | 940               | 86    | 39    | 854   |
-| 203m          | Aleteo Auricular        | 12.6866      | 30.4933       | 536               | 68    | 155   | 468   |
-| 203m          | Fibrilacion Auricular   | 15.9864      | 66.7851       | 2352              | 376   | 187   | 1976  |
-| 203m          | Taquicardia ventricular | 20.2532      | 2.2599        | 79                | 16    | 692   | 63    |
-| 203m          | Otra Arritmia           | 14.2857      | 0.12755       | 7                 | 1     | 783   | 6     |
-| 205m          | Ritmo Sinusal Normal    | 95.9724      | 100           | 2607              | 2502  | 0     | 105   |
-| 205m          | Taquicardia ventricular | 38.7755      | 39.5833       | 49                | 19    | 29    | 30    |
-| 207m          | Ritmo Sinusal Normal    | 0.3367       | 71.4286       | 1485              | 5     | 2     | 1480  |
-| 207m          | Taquicardia ventricular | 0            | 0             | 6                 | 0     | 492   | 6     |
-| 207m          | Flutter ventricular     | 14.6186      | 58.4746       | 472               | 69    | 49    | 403   |
-| 207m          | Otra Arritmia           | 41.1924      | 10.7042       | 369               | 152   | 1268  | 217   |
-| 208m          | Ritmo Sinusal Normal    | 10.438       | 65.051        | 2443              | 255   | 137   | 2188  |
-| 208m          | Otra Arritmia           | 11.3725      | 10.6422       | 510               | 58    | 487   | 452   |
-| 209m          | Ritmo Sinusal Normal    | 50.1822      | 100           | 2744              | 1377  | 0     | 1367  |
-| 209m          | Otra Arritmia           | 1.9157       | 62.5          | 261               | 5     | 3     | 256   |
-| 210m          | Fibrilacion Auricular   | 7.4489       | 92.3445       | 2591              | 193   | 16    | 2398  |
-| 210m          | Taquicardia ventricular | 8.3333       | 0.079618      | 12                | 1     | 1255  | 11    |
-| 210m          | Otra Arritmia           | 21.7391      | 2.3641        | 46                | 10    | 413   | 36    |
-| 212m          | Ritmo Sinusal Normal    | 87.2635      | 100           | 2748              | 2398  | 0     | 350   |
-| 213m          | Ritmo Sinusal Normal    | 0.41467      | 100           | 3135              | 13    | 0     | 3122  |
-| 213m          | Taquicardia ventricular | 28.5714      | 0.55556       | 7                 | 2     | 358   | 5     |
-| 213m          | Otra Arritmia           | 0            | 0             | 109               | 0     | 8     | 109   |
-| 214m          | Ritmo Sinusal Normal    | 18.5424      | 98.2885       | 2168              | 402   | 7     | 1766  |
-| 214m          | Taquicardia ventricular | 16.6667      | 0.15244       | 6                 | 1     | 655   | 5     |
-| 214m          | Otra Arritmia           | 22.7273      | 2.2198        | 88                | 20    | 881   | 68    |
-| 215m          | Ritmo Sinusal Normal    | 0.47662      | 100           | 3357              | 16    | 0     | 3341  |
-| 215m          | Taquicardia ventricular | 0            | 0             | 6                 | 0     | 995   | 6     |
-| 217m          | Fibrilacion Auricular   | 2.9586       | 45.4545       | 338               | 10    | 12    | 328   |
-| 217m          | Taquicardia ventricular | 0            | 0             | 3                 | 0     | 314   | 3     |
-| 217m          | Otra Arritmia           | 84.1457      | 92.3032       | 1867              | 1571  | 131   | 296   |
-| 219m          | Ritmo Sinusal Normal    | 6.079        | 3.5149        | 329               | 20    | 549   | 309   |
-| 219m          | Fibrilacion Auricular   | 17.7026      | 62.9191       | 1802              | 319   | 188   | 1483  |
-| 219m          | Otra Arritmia           | 34.7826      | 1.5564        | 23                | 8     | 506   | 15    |
-| 220m          | Ritmo Sinusal Normal    | 33.3003      | 99.8516       | 2021              | 673   | 1     | 1348  |
-| 220m          | Otra Arritmia           | 3.7037       | 0.11751       | 27                | 1     | 850   | 26    |
-| 221m          | Fibrilacion Auricular   | 12.4735      | 96.3934       | 2357              | 294   | 11    | 2063  |
-| 221m          | Taquicardia ventricular | 33.3333      | 0.31596       | 6                 | 2     | 631   | 4     |
-| 221m          | Otra Arritmia           | 46.875       | 3.5971        | 64                | 30    | 804   | 34    |
-| 222m          | Ritmo Sinusal Normal    | 68.9246      | 91.6667       | 1181              | 814   | 74    | 367   |
-| 222m          | Aleteo Auricular        | 24.3935      | 59.5395       | 742               | 181   | 123   | 561   |
-| 222m          | Fibrilacion Auricular   | 22.3404      | 7.554         | 188               | 42    | 514   | 146   |
-| 222m          | Otra Arritmia           | 42.2043      | 42.5474       | 372               | 157   | 212   | 215   |
-| 223m          | Ritmo Sinusal Normal    | 43.2365      | 96.8575       | 1996              | 863   | 28    | 1133  |
-| 223m          | Taquicardia ventricular | 47.5138      | 9.6521        | 181               | 86    | 805   | 95    |
-| 223m          | Otra Arritmia           | 15.1869      | 32.6633       | 428               | 65    | 134   | 363   |
-| 228m          | Ritmo Sinusal Normal    | 10.428       | 98.8571       | 1659              | 173   | 2     | 1486  |
-| 228m          | Otra Arritmia           | 58.8832      | 42.4132       | 394               | 232   | 315   | 162   |
-| 230m          | Ritmo Sinusal Normal    | 61.1484      | 93.7143       | 1341              | 820   | 55    | 521   |
-| 230m          | Otra Arritmia           | 49.071       | 63.1505       | 915               | 449   | 262   | 466   |
-| 231m          | Ritmo Sinusal Normal    | 90.7906      | 100           | 1151              | 1045  | 0     | 106   |
-| 231m          | Otra Arritmia           | 0.95238      | 19.0476       | 420               | 4     | 17    | 416   |
-| 232m          | Bradicardia Sinusal     | 1.1236       | 100           | 1780              | 20    | 0     | 1760  |
-| 233m          | Ritmo Sinusal Normal    | 5.8865       | 100           | 2871              | 169   | 0     | 2702  |
-| 233m          | Taquicardia ventricular | 27.7778      | 0.62344       | 18                | 5     | 797   | 13    |
-| 233m          | Otra Arritmia           | 52.6316      | 14.0056       | 190               | 100   | 614   | 90    |
-| 234m          | Ritmo Sinusal Normal    | 95.7085      | 99.8842       | 2703              | 2587  | 3     | 116   |
-| 234m          | Otra Arritmia           | 4            | 100           | 50                | 2     | 0     | 48    |
-| 48 resgistros |                         | 37.42313989  | 65.82458723   | 109940            | 41143 | 21361 | 68797 |
+Registro    |Arritmia|Numero de latidos|VP  |FP  |FN    |Sensibilidad|Predictividad|
+|------------|--------|-----------------|----|----|------|------------|-------------|
+|100m        |Ritmo Sinusal Normal|2273             |1571|0   |702   |69.12       |100.00       |
+|101m        |Ritmo Sinusal Normal|1863             |1790|0   |73    |96.08       |100.00       |
+|102m        |Ritmo Sinusal Normal|102              |66  |75  |36    |64.71       |46.81        |
+|102m        |Otra Arritmia|2085             |1140|49  |945   |54.68       |95.88        |
+|103m        |Ritmo Sinusal Normal|2084             |1532|0   |552   |73.51       |100.00       |
+|104m        |Ritmo Sinusal Normal|289              |52  |92  |237   |17.99       |36.11        |
+|104m        |Otra Arritmia|1940             |655 |145 |1285  |33.76       |81.88        |
+|105m        |Ritmo Sinusal Normal|2572             |305 |1   |2267  |11.86       |99.67        |
+|106m        |Ritmo Sinusal Normal|1483             |741 |1   |742   |49.97       |99.87        |
+|106m        |Taquicardia ventricular|3                |0   |5   |3     |0.00        |0.00         |
+|106m        |Otra Arritmia|541              |297 |318 |244   |54.90       |48.29        |
+|107m        |Otra Arritmia|2137             |2041|4   |96    |95.51       |99.80        |
+|108m        |Ritmo Sinusal Normal|1761             |291 |1   |1470  |16.52       |99.66        |
+|109m        |Ritmo Sinusal Normal|2532             |88  |0   |2444  |3.48        |100.00       |
+|111m        |Ritmo Sinusal Normal|2123             |25  |1   |2098  |1.18        |96.15        |
+|112m        |Ritmo Sinusal Normal|2539             |654 |0   |1885  |25.76       |100.00       |
+|113m        |Ritmo Sinusal Normal|1789             |1319|2   |470   |73.73       |99.85        |
+|114m        |Ritmo Sinusal Normal|1872             |297 |0   |1575  |15.87       |100.00       |
+|114m        |Otra Arritmia|7                |4   |1427|3     |57.14       |0.28         |
+|115m        |Ritmo Sinusal Normal|1953             |1658|0   |295   |84.90       |100.00       |
+|116m        |Ritmo Sinusal Normal|2412             |1370|0   |1042  |56.80       |100.00       |
+|117m        |Ritmo Sinusal Normal|1535             |12  |0   |1523  |0.78        |100.00       |
+|118m        |Ritmo Sinusal Normal|2274             |799 |0   |1475  |35.14       |100.00       |
+|119m        |Ritmo Sinusal Normal|1498             |955 |73  |543   |63.75       |92.90        |
+|119m        |Otra Arritmia|489              |208 |203 |281   |42.54       |50.61        |
+|121m        |Ritmo Sinusal Normal|1863             |407 |0   |1456  |21.85       |100.00       |
+|122m        |Ritmo Sinusal Normal|2476             |2458|0   |18    |99.27       |100.00       |
+|123m        |Ritmo Sinusal Normal|1518             |95  |0   |1423  |6.26        |100.00       |
+|124m        |Ritmo Sinusal Normal|1534             |183 |11  |1351  |11.93       |94.33        |
+|124m        |Otra Arritmia|85               |52  |543 |33    |61.18       |8.74         |
+|200m        |Ritmo Sinusal Normal|1398             |384 |24  |1014  |27.47       |94.12        |
+|200m        |Taquicardia ventricular|23               |5   |367 |18    |21.74       |1.34         |
+|200m        |Otra Arritmia|1180             |352 |114 |828   |29.83       |75.54        |
+|201m        |Ritmo Sinusal Normal|689              |28  |151 |661   |4.06        |15.64        |
+|201m        |Fibrilacion Auricular|911              |130 |203 |781   |14.27       |39.04        |
+|201m        |Otra Arritmia|361              |184 |467 |177   |50.97       |28.26        |
+|202m        |Ritmo Sinusal Normal|1092             |129 |67  |963   |11.81       |65.82        |
+|202m        |Aleteo Auricular|104              |79  |154 |25    |75.96       |33.91        |
+|202m        |Fibrilacion Auricular|940              |86  |39  |854   |9.15        |68.80        |
+|203m        |Aleteo Auricular|536              |68  |155 |468   |12.69       |30.49        |
+|203m        |Fibrilacion Auricular|2352             |376 |187 |1976  |15.99       |66.79        |
+|203m        |Taquicardia ventricular|79               |16  |692 |63    |20.25       |2.26         |
+|203m        |Otra Arritmia|7                |1   |783 |6     |14.29       |0.13         |
+|205m        |Ritmo Sinusal Normal|2607             |2502|0   |105   |95.97       |100.00       |
+|205m        |Taquicardia ventricular|49               |19  |29  |30    |38.78       |39.58        |
+|207m        |Ritmo Sinusal Normal|1485             |5   |2   |1480  |0.34        |71.43        |
+|207m        |Taquicardia ventricular|6                |0   |492 |6     |0.00        |0.00         |
+|207m        |Flutter ventricular|472              |69  |49  |403   |14.62       |58.47        |
+|207m        |Otra Arritmia|369              |152 |1268|217   |41.19       |10.70        |
+|208m        |Ritmo Sinusal Normal|2443             |255 |137 |2188  |10.44       |65.05        |
+|208m        |Otra Arritmia|510              |58  |487 |452   |11.37       |10.64        |
+|209m        |Ritmo Sinusal Normal|2744             |1377|0   |1367  |50.18       |100.00       |
+|209m        |Otra Arritmia|261              |5   |3   |256   |1.92        |62.50        |
+|210m        |Fibrilacion Auricular|2591             |193 |16  |2398  |7.45        |92.34        |
+|210m        |Taquicardia ventricular|12               |1   |1255|11    |8.33        |0.08         |
+|210m        |Otra Arritmia|46               |10  |413 |36    |21.74       |2.36         |
+|212m        |Ritmo Sinusal Normal|2748             |2398|0   |350   |87.26       |100.00       |
+|213m        |Ritmo Sinusal Normal|3135             |13  |0   |3122  |0.41        |100.00       |
+|213m        |Taquicardia ventricular|7                |2   |358 |5     |28.57       |0.56         |
+|213m        |Otra Arritmia|109              |0   |8   |109   |0.00        |0.00         |
+|214m        |Ritmo Sinusal Normal|2168             |402 |7   |1766  |18.54       |98.29        |
+|214m        |Taquicardia ventricular|6                |1   |655 |5     |16.67       |0.15         |
+|214m        |Otra Arritmia|88               |20  |881 |68    |22.73       |2.22         |
+|215m        |Ritmo Sinusal Normal|3357             |16  |0   |3341  |0.48        |100.00       |
+|215m        |Taquicardia ventricular|6                |0   |995 |6     |0.00        |0.00         |
+|217m        |Fibrilacion Auricular|338              |10  |12  |328   |2.96        |45.45        |
+|217m        |Taquicardia ventricular|3                |0   |314 |3     |0.00        |0.00         |
+|217m        |Otra Arritmia|1867             |1571|131 |296   |84.15       |92.30        |
+|219m        |Ritmo Sinusal Normal|329              |20  |549 |309   |6.08        |3.51         |
+|219m        |Fibrilacion Auricular|1802             |319 |188 |1483  |17.70       |62.92        |
+|219m        |Otra Arritmia|23               |8   |506 |15    |34.78       |1.56         |
+|220m        |Ritmo Sinusal Normal|2021             |673 |1   |1348  |33.30       |99.85        |
+|220m        |Otra Arritmia|27               |1   |850 |26    |3.70        |0.12         |
+|221m        |Fibrilacion Auricular|2357             |294 |11  |2063  |12.47       |96.39        |
+|221m        |Taquicardia ventricular|6                |2   |631 |4     |33.33       |0.32         |
+|221m        |Otra Arritmia|64               |30  |804 |34    |46.88       |3.60         |
+|222m        |Ritmo Sinusal Normal|1181             |814 |74  |367   |68.92       |91.67        |
+|222m        |Aleteo Auricular|742              |181 |123 |561   |24.39       |59.54        |
+|222m        |Fibrilacion Auricular|188              |42  |514 |146   |22.34       |7.55         |
+|222m        |Otra Arritmia|372              |157 |212 |215   |42.20       |42.55        |
+|223m        |Ritmo Sinusal Normal|1996             |863 |28  |1133  |43.24       |96.86        |
+|223m        |Taquicardia ventricular|181              |86  |805 |95    |47.51       |9.65         |
+|223m        |Otra Arritmia|428              |65  |134 |363   |15.19       |32.66        |
+|228m        |Ritmo Sinusal Normal|1659             |173 |2   |1486  |10.43       |98.86        |
+|228m        |Otra Arritmia|394              |232 |315 |162   |58.88       |42.41        |
+|230m        |Ritmo Sinusal Normal|1341             |820 |55  |521   |61.15       |93.71        |
+|230m        |Otra Arritmia|915              |449 |262 |466   |49.07       |63.15        |
+|231m        |Ritmo Sinusal Normal|1151             |1045|0   |106   |90.79       |100.00       |
+|231m        |Otra Arritmia|420              |4   |17  |416   |0.95        |19.05        |
+|232m        |Bradicardia Sinusal|1780             |20  |0   |1760  |1.12        |100.00       |
+|233m        |Ritmo Sinusal Normal|2871             |169 |0   |2702  |5.89        |100.00       |
+|233m        |Taquicardia ventricular|18               |5   |797 |13    |27.78       |0.62         |
+|233m        |Otra Arritmia|190              |100 |614 |90    |52.63       |14.01        |
+|234m        |Ritmo Sinusal Normal|2703             |2587|3   |116   |95.71       |99.88        |
+|234m        |Otra Arritmia|50               |2   |0   |48    |4.00        |100.00       |
+|48 registros|        |109940           |41143|21361|68797 |37.42       |65.82        |
+
 
 ## Conclusiones
 
