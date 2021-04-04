@@ -261,11 +261,11 @@ Video - Programa para detectar arritmias --> https://www.youtube.com/watch?v=d4x
 | 233m         | Otra Arritmia           | 190               | 100   | 614   | 90    | 52.63        | 14.01         |
 | 234m         | Ritmo Sinusal Normal    | 2703              | 2587  | 3     | 116   | 95.71        | 99.88         |
 | 234m         | Otra Arritmia           | 50                | 2     | 0     | 48    | 4.00         | 100.00        |
-| **48 registros** |                         | 109957            | 41147 | 21357 | 68810 | 37.42099184  | 65.83098682   |
+| **48 registros** |                         | 109957            | 41147 | 21357 | 68810 | 37.42 | 65.83   |
 
 
 ## Conclusiones
 
-* Se implementó el algoritmo Pan Tompkins para hallar los picos R con una sensibilidad de 99.02% y predictividad de 99.11% sobre los 48 registros que proporciona la base de datos de arritmias del MIT-BIH 24H.
-* Se implementó el algoritmo de Mohamed Elgendi para hallar las ondas P con una sensibilidad de 94.33% y predictividad de 88.37% sobre los 12 registros que proporciona la base de datos de arritmias del MIT-BIH 24H para las ondas P.
-* Se implementó las reglas de decisión de Parayikorn para poder detectar las arritmias con una sensibilidad de 37.42% y predictividad de 65.82% sobre los 48 registros de la base de datos de arritmias del MIT-BIH 24H.
+* Se implementó el algoritmo Pan Tompkins para hallar los picos R con una sensibilidad de 99.03% y predictividad de 99.14% sobre los 48 registros que proporciona la base de datos de arritmias del MIT-BIH 24H.
+* Se implementó el algoritmo de Mohamed Elgendi para hallar las ondas P con una sensibilidad de 94.07% y predictividad de 83.52% sobre los 12 registros que proporciona la base de datos de arritmias del MIT-BIH 24H para las ondas P.
+* Se implementó las reglas de decisión de Parayikorn para poder detectar las arritmias con una sensibilidad de 37.42% y predictividad de 65.83% sobre los 48 registros de la base de datos de arritmias del MIT-BIH 24H.
