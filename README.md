@@ -45,7 +45,7 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 ![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
 
-Video Pan Tompkins --> https://www.youtube.com/watch?v=AkSHIWIy5X8
+Video Pan Tompkins --> https://www.youtube.com/watch?v=0E1IIR_Qc0s
 
 ## **Tabla de resultados Pan Tompkins**
 
