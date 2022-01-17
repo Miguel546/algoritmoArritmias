@@ -21,8 +21,6 @@ En la consola de mysql ejecutar
 mysql> \. rutaProyecto\MitArrythmiaDatabase.sql
 ```
 
-Video - Base de datos de arritmias MySQL --> https://www.youtube.com/watch?v=GYFVdQaUO4E 
-
 Después será capaz de ejecutar el programa de detección de arritmias, el de los picos R y el de los puntos P.
 
 ## Metodología
@@ -44,8 +42,6 @@ Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el
 Después se abrirá el programa para hallar los Picos R. Selecciona el registro a analizar(100m-234m). Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
 ![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
-
-Video Pan Tompkins --> https://www.youtube.com/watch?v=0E1IIR_Qc0s
 
 ## **Tabla de resultados Pan Tompkins**
 
@@ -115,8 +111,6 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 
 ![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
 
-Video - Ondas P - Elgendi --> https://www.youtube.com/watch?v=Jn7FqlnJGWw
-
 ## **Tabla de resultados Elgendi**
 
 | **Registro Mit** | **Ondas P** | **VP**    | **FP**   | **FN**   | **Sensibilidad** | **Predictividad** |
@@ -159,8 +153,6 @@ Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el
 Después se abrirá el programa para detectar las arritmias. Selecciona un registros de los 48 del MIT-BIH 24h Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. La aplicación detecta la arritmia y te dice en que muestra la detecta.
 
 ![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
-
-Video - Programa para detectar arritmias --> https://www.youtube.com/watch?v=d4xTK3QCPPQ
 
 ## **Tabla de resultados Arritmias**
 
