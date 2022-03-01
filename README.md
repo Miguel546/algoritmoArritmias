@@ -6,13 +6,6 @@ Figura en la que se compara un electrocardiograma de un corazón sano y un elect
 
 ![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/rsn_fa.png)
 
-## Requisitos
-
-- MATLAB 2015 o superior
-- PC con procesador con Intel Core i3 o superior
-- MySQL 5.0 o superior
-- 8 gb de ram o superior
-
 ## Pasos para poder ejecutar el programa
 
 En la consola de mysql ejecutar
