@@ -6,16 +6,6 @@ Figura en la que se compara un electrocardiograma de un corazón sano y un elect
 
 ![ECG_RSN_FA](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/rsn_fa.png)
 
-## Pasos para poder ejecutar el programa
-
-En la consola de mysql ejecutar
-
-```
-mysql> \. rutaProyecto\MitArrythmiaDatabase.sql
-```
-
-Después será capaz de ejecutar el programa de detección de arritmias, el de los picos R y el de los puntos P.
-
 ## Metodología
 
 Para la presente investigación para la validación de la efectividad de la aplicación de detección de arritmias se implementará 3 algoritmos. Para la detección del complejo QRS se hace uso del algoritmo Pan Tompkins para detectar el complejo QRS y para las ondas P propuesta por Elgendi y para hallar las arritmias se utilizó las reglas de decisión de Parayikorn. La base de datos utilizada es la MIT-BIH Arrythmia Database del portal Physionet, la cual contiene 48 registros, cada registro digitalizado con 360 muestras/segundo y cada registro con 650000 muestras con registros de electrocardiogramas de diversas arritmias cada registro de 47 sujetos estudiados en el BIH Arrhythmia Laboratory entre 1975 y 1979. (Moody G.B & Mark R.G, 2001, p. 45-47)
@@ -23,16 +13,6 @@ Para la presente investigación para la validación de la efectividad de la apli
 Para descargarse los registros tiene que acceder a la siguiente url: https://archive.physionet.org/cgi-bin/atm/ATM tienes que seleccionar MIT-BIH Arrhythmia Database (mitdb) y en signals seleccionar MLII, en caso de los registros 102 y 104m seleccionar el registro V5 y descargarlos en formato .mat en toolbox seleccionar "Export signals as .mat" en la duración ponerle "to end" y en time format "time/date". Los registros descargdos ya estan en la carpeta registro de este repositorio en formato .mat.
 
 **1. Pan & Tompkins, 1985** desarrollaron un algoritmo en tiempo real para la detección de complejos QRS en señales electrocardiográficas, el cual es capaz de detectar el complejo QRS basado en la pendiente, amplitud y ancho. Un filtro pasabanda especial reduce falsas detecciones causadas por varios tipos de ruido presentes en la señal ECG lo cual permite el uso de umbrales lo que aumenta la sensibilidad de detección. El algoritmo ajusta automáticamente los umbrales y los parámetros periódicamente para adaptarse a los cambios de electrocardiograma como la morfología QRS y la frecuencia cardíaca” (Pan Tompkins, 1985, p. 230).  Para el estándar de la base de datos de arritmias del MIT-BIH 24 horas, se replicó el algoritmo Pan-Tompkins en MATLAB detectando correctamente el 96,32% de los complejos QRS mientras que en el artículo original dice un 99.3% por lo tanto el valor obtenido oscila con el original.
-
-Para poder ejecutar el programa ubicarse sobre el archivo **PicoR.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
-
-![Open in Guide PicosR](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoROpenGuide.png)
-
-Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
-
-![Run Figure - Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/picoRPlay.png)
-
-Después se abrirá el programa para hallar los Picos R. Selecciona el registro a analizar(100m-234m). Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
 
 ![Picos R](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/PicoR.png)
 
@@ -92,16 +72,6 @@ Después se abrirá el programa para hallar los Picos R. Selecciona el registro 
 
 **2. Elgendi, 2016** propuso un método basado en dos filtros de promedio móvil seguido de un umbral de duración de evento dinámico para detectar ondas P y T en señales electrocardiográficas. La detección de las ondas P y T es afectada por la calidad de las grabaciones de electrocardiogramas y las anormalidades de las señales electrocardiográficas. Dicho método detecta ondas P y T en señales electrocardiográficas de arritmias que sufren: 1) efectos no estacionarios, 2) baja relación señal / ruido, 3) Complejo auricular prematuro, 5) Bloques de rama izquierda y 6) Bloques de rama derecha. Cabe destacar que el detector de ondas P y T obtuvo una sensibilidad del 98.05 por ciento y una predictividad positiva del 97.11 por ciento para las ondas P sobre 10 registros de la base de datos de arritmia MIT-BIH con 21702 latidos
 
-Para poder ejecutar el programa ubicarse sobre el archivo **OndasPT.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
-
-![Open in Guide OndasP](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndasPOpenGuide.png)
-
-Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
-
-![Run Figure - Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaPPlay.png)
-
-Después se abrirá el programa para hallar los Ondas P. Selecciona un registros de los 12 registros de la Onda P del MIT-BIH Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. 
-
 ![Ondas P](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/OndaP.png)
 
 ## **Tabla de resultados Elgendi**
@@ -134,16 +104,6 @@ Después se abrirá el programa para hallar los Ondas P. Selecciona un registros
 | Aleteo auricular        | Regular   | cualquiera     | >=1    | No           | < 125 ms     |
 | Taquicardia ventricular | Regular   | >75 lpm        | No     | No           | > 125 ms     |
 | Flutter ventricular     | Irregular | >120 lpm       | No     | No           | > 125 ms     |
-
-Para poder ejecutar el programa ubicarse sobre el archivo **DetectorArritmias.fig** y darle click derecho y seleccionar **"Open in GUIDE"**
-
-![Open in Guide DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasOpenGuide.png)
-
-Luego se te abrira la figura dale **CTRL + T** o **Run Figure** para ejecutar el programa.
-
-![Run Figure - DetectorArritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/ArritmiasPlay.png)
-
-Después se abrirá el programa para detectar las arritmias. Selecciona un registros de los 48 del MIT-BIH 24h Arrythmias Database. Al grafico le puedes hacer zoom +, zoom -, moverte por el registro, poner el punto en un punto y te aparecera la muestra y el voltaje en las cajas de texto. La aplicación detecta la arritmia y te dice en que muestra la detecta.
 
 ![Arritmias](https://github.com/Miguel546/algoritmoArritmias/blob/master/imagenes/Arritmias.png)
 
